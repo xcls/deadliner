@@ -14,7 +14,7 @@ class ProjectManager
   end
 
   def deadlines_for(id)
-    client.list_milestones(id)
+    client.list_milestones(id).map { |m| Deadline.new(m) }
   end
 
   private
@@ -37,5 +37,13 @@ class ProjectManager
 
   class Deadline
     include Charlatan.new(:original)
+
+    def name
+      original.title
+    end
+
+    def completion_percentage
+      ((closed_issues / (open_issues + closed_issues).to_d) * 100.0).round(2)
+    end
   end
 end
