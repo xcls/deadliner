@@ -15,6 +15,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
+gem 'octokit'
 gem 'omniauth-github'
 gem 'puma'
 gem 'rails_12factor', group: :production
@@ -26,6 +27,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
+  gem 'webmock'
 end
 
 group :development do

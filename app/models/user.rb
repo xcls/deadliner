@@ -8,9 +8,16 @@ class User < ActiveRecord::Base
 
   class << self
     def from_omniauth(auth)
-      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-        user.email = auth.info.email
+      user = where(provider: auth.provider, uid: auth.uid).first_or_create do |u|
+        u.email = auth.info.email
       end
+      # In case we changed the permissions we need to update the access token
+      if auth.credentials.try(:token)
+        user.update!(github_token: auth.credentials.token)
+      else
+        logger.error { "No github access token found #{user.email}" }
+      end
+      user
     end
   end
 end
