@@ -16,3 +16,5 @@
 config/database.yml
 
 .env.local
+coverage/
+spec/examples.txt

@@ -24,6 +24,7 @@ gem 'rails_12factor', group: :production
 gem 'rdiscount'
 
 group :test do
+  gem 'simplecov', require: false
   gem 'webmock'
 end
 
