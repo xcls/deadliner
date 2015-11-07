@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   end
 
   resources :deadlines, only: [:show]
-  resources :dashboards
+  resources :dashboards, only: [:new, :create]
+
+  get '/dashboards/:link_slug', to: 'dashboards#show', as: :dashboard
 
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
   root 'home#index'
