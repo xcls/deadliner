@@ -3,8 +3,11 @@ module ApplicationHelper
     if time.present?
       content_tag(:div, {
         class: 'js-countdown',
+        title: "Due on #{time.to_formatted_s(:long)}",
         data: { "epoch-seconds" => time.to_i }
-      }) { time.to_formatted_s(:long) }
+      }) do
+        time.to_formatted_s(:long)
+      end
     else
       content_tag :div, "No time specified"
     end
