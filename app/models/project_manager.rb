@@ -22,11 +22,11 @@ class ProjectManager
   end
 
   def open_tasks_for(project_id, deadline_id)
-    client.list_issues(project_id, milestone: deadline_id, state: :open).map { |m| Task.new(m) }
+    wrap_with Task, client.list_issues(project_id, milestone: deadline_id, state: :open)
   end
 
   def closed_tasks_for(project_id, deadline_id)
-    client.list_issues(project_id, milestone: deadline_id, state: :closed).map { |m| Task.new(m) }
+    wrap_with Task, client.list_issues(project_id, milestone: deadline_id, state: :closed)
   end
 
   private
