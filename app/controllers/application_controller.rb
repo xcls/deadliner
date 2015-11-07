@@ -6,4 +6,10 @@ class ApplicationController < ActionController::Base
   def new_session_path(scope)
     root_path
   end
+
+  protected
+
+  def pm
+    @pm ||= ProjectManager.new(current_user)
+  end
 end
