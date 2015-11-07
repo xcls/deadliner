@@ -2,7 +2,10 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    render locals: { projects: pm.projects(page: params[:page]) }
+    render layout: 'simple', locals: {
+      github_user: pm.github_user,
+      projects: pm.projects(page: params[:page])
+    }
   end
 
   def show

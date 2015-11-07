@@ -5,6 +5,10 @@ class ProjectManager
     @user = user
   end
 
+  def github_user
+    @github_user ||= client.user
+  end
+
   def projects(page: 1)
     wrap_with Project, client.repos(nil, {
       page: page,

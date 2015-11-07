@@ -1,19 +1,23 @@
-<h2>Projects</h2>
-<table>
-  <thead>
-    <tr>
-      <td>Project</td>
-      <td>Open tasks</td>
-    </tr>
-  </thead>
-  <tbody>
-<% projects.each do |project| %>
-  <tr>
-    <td><%= link_to project.full_name, project_path(project.id) %></td>
-    <td><%= project.task_count %></td>
-  </tr>
-<% end %>
-  </tbody>
-</table>
+<div class="projects-header">
+  <img class="projects-avatar" src="<%= github_user.avatar_url %>" alt="<%= github_user.name %>">
+  <p class="projects-instructions">
+  Select a project to visualize its milestones
+  </p>
+</div>
+<ul class="projects">
+  <% projects.each do |project| %>
+    <li class="project">
+      <div class="project-details">
+        <div class="project-name">
+          <%= link_to project.full_name, project_path(project.id) %>
+        </div>
+        <div class="project-description">
+          <%= project.description %>
+        </div>
+      </div>
+      <a class="project-share" href="#"></a>
+    </li>
+  <% end %>
+</ul>
 
 <%= paginate projects %>
