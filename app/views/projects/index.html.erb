@@ -15,35 +15,15 @@
           <%= project.description %>
         </div>
       </div>
-      <a class="project-share" href="#"></a>
+      <% if project.dashboard  %>
+        <a data-clipboard-text='<%= show_dashboard_url(link_slug: project.dashboard.link_slug)%>' id='d_clip_button' title='Click me to copy to clipboard.' class="project-share" />
+        <%= link_to "Edit", edit_dashboard_path(project_identifier: project.full_name), class: 'project-edit' %>
+        <%= link_to "Destroy", dashboard_path(project.dashboard), method: :delete, class: 'project-destroy' %>
+      <% else %>
+        <%= link_to "Start sharing", new_dashboard_path(project_identifier: project.full_name), class: 'project-new' %>
+      <% end %>
     </li>
   <% end %>
 </ul>
-<h2>Projects</h2>
-<table>
-  <thead>
-    <tr>
-      <td>Project</td>
-      <td>Open tasks</td>
-    </tr>
-  </thead>
-  <tbody>
-<% projects.each do |project| %>
-  <tr>
-    <td><%= link_to project.full_name, project_path(project.id) %></td>
-    <td><%= project.task_count %></td>
-    <td>
-      <% if project.dashboard  %>
-        <a data-clipboard-text='<%= show_dashboard_url(link_slug: project.dashboard.link_slug)%>' id='d_clip_button' title='Click me to copy to clipboard.'>Copy link <a/>
-        <%= link_to "Edit", edit_dashboard_path(project_identifier: project.full_name) %>
-        <%= link_to "Destroy", dashboard_path(project.dashboard), method: :delete %>
-      <% else %>
-        <%= link_to "Share", new_dashboard_path(project_identifier: project.full_name) %>
-      <% end %>
-    </td>
-  </tr>
-<% end %>
-  </tbody>
-</table>
 
 <%= paginate projects %>
