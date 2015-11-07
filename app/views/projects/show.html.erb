@@ -1,6 +1,6 @@
 <h2>Project: <%= project.full_name %></h2>
 <% deadlines.each do |deadline| %>
-  <h3><%= deadline.title %></h3>
+  <a href="<%= deadline_path(project_id: project.full_name, id: deadline.number)%>"><h3><%= deadline.title %></h3></a>
   <p>State: <%= deadline.state %></p>
   <p>Is due on <strong><%= deadline.due_on.to_formatted_s(:long) %></strong></p>
   <p>Which is <strong><%= distance_of_time_in_words_to_now(deadline.due_on) %></strong> from now</p>

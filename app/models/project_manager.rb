@@ -14,7 +14,11 @@ class ProjectManager
   end
 
   def deadlines_for(id)
-    client.list_milestones(id).map { |m| Deadline.new(m) }
+    client.list_milestones(id, state: :open).map { |m| Deadline.new(m) }
+  end
+
+  def find_deadline(project_id, id)
+    Deadline.new(client.milestone(project_id, id))
   end
 
   private
@@ -45,5 +49,10 @@ class ProjectManager
     def completion_percentage
       ((closed_issues / (open_issues + closed_issues).to_d) * 100.0).round(2)
     end
+  end
+
+  class Task
+    include Charlatan.new(:original)
+
   end
 end
