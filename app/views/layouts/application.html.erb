@@ -19,14 +19,14 @@
   <% end %>
   </p>
 
-  <p>
-  <%= notice %>
-  <strong style='color: red'><%= alert %></strong>
-  </p>
+  <% if notice %>
+    <p><strong style='color: blue'><%= notice %></strong></p>
+  <% end %>
 
-  <pre>
-  ENV: <%= Rails.env %>
-  </pre>
+  <% if alert %>
+    <p><strong style='color: red'><%= alert %></strong></p>
+  <% end %>
+
   <%= yield %>
 </body>
 </html>

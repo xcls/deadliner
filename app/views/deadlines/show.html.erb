@@ -1,14 +1,17 @@
 <h2>Deadline: <%= deadline.name %></h2>
-<% open_tasks.each do |open_task| %>
-  <h3><%= open_task.title %></h3>
-  <p>State: <%= open_task.state %></p>
 
-  <%= raw ap open_task %>
+<h4>Open tasks</h4>
+<% open_tasks.each do |task| %>
+  <h5><%= task.title %></h5>
+  <p>State: <%= task.state %></p>
+  <%= simple_format task.body %>
 <% end %>
 
-<% closed_tasks.each do |closed_task| %>
-  <h3><%= closed_task.title %></h3>
-  <p>State: <%= closed_task.state %></p>
+<hr>
 
-  <%= raw ap closed_task %>
+<h4>Closed tasks</h4>
+<% closed_tasks.each do |task| %>
+  <h5><%= task.title %></h5>
+  <p>State: <%= task.state %></p>
+  <%= simple_format task.body %>
 <% end %>

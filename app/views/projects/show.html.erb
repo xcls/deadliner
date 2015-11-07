@@ -1,10 +1,12 @@
 <h2>Project: <%= project.full_name %></h2>
 <% deadlines.each do |deadline| %>
-  <a href="<%= deadline_path(project_id: project.full_name, id: deadline.number)%>"><h3><%= deadline.title %></h3></a>
-  <p>State: <%= deadline.state %></p>
-  <p>Is due on <strong><%= deadline.due_on.to_formatted_s(:long) %></strong></p>
-  <p>Which is <strong><%= distance_of_time_in_words_to_now(deadline.due_on) %></strong> from now</p>
-
-  <p>There are <%= deadline.open_issues %> open issues and <%= deadline.closed_issues %> closed issues, so it's <%= deadline.completion_percentage %>% complete.</p>
-  <%= raw ap deadline %>
+  <article>
+    <h3>
+      <%= link_to deadline.name, deadline_path(project_id: project.full_name, id: deadline.number) %>
+    </h3>
+    <p>State: <%= deadline.state %></p>
+    <p>Is due on <strong><%= deadline.due_on.to_formatted_s(:long) %></strong></p>
+    <p>Which is <strong><%= distance_of_time_in_words_to_now(deadline.due_on) %></strong> from now</p>
+    <p>There are <%= deadline.open_issues %> open issues and <%= deadline.closed_issues %> closed issues, so it's <%= deadline.completion_percentage %>% complete.</p>
+  </article>
 <% end %>
