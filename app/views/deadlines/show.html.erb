@@ -1,4 +1,11 @@
 <h2>Deadline: <%= deadline.name %></h2>
+<p>Due on: <%= deadline.due_on.strftime('%Y/%m/%d %H:%M:%S') %></p>
+<p>Due on: <%= deadline.due_on.to_i.to_s %></p>
+<div class="js-countdown"
+  data-epoch-seconds="<%= deadline.due_on.to_i %>">
+  Original: <%= deadline.due_on.to_formatted_s(:long) %>
+</div>
+<hr>
 
 <h4>Tasks</h4>
 <% tasks.each do |task| %>
