@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :projects, only: [:index, :show]
   resources :deadlines, only: [:show]
+  resources :dashboards
 
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
   root 'home#index'

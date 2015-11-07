@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   devise :trackable, :omniauthable,
     omniauth_providers: [:github]
 
+  has_many :dashboards
+
   class << self
     def from_omniauth(auth)
       user = where(provider: auth.provider, uid: auth.uid).first_or_create do |u|
