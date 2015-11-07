@@ -9,7 +9,7 @@
     <li class="project">
       <div class="project-details">
         <div class="project-name">
-          <%= link_to project.full_name, project_path(project.id) %>
+          <%= link_to project.full_name, project.to_path %>
         </div>
         <div class="project-description">
           <%= project.description %>

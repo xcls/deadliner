@@ -9,9 +9,10 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    uid = params[:uid] || params[:id]
     render locals: {
-      project: pm.find_project(params[:id]),
-      deadlines: pm.deadlines_for(params[:id]),
+      project: pm.find_project(uid),
+      deadlines: pm.deadlines_for(uid),
     }
   end
 end

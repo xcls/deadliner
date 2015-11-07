@@ -56,6 +56,10 @@ class ProjectManager
     def task_count
       original.open_issues_count
     end
+
+    def to_path
+      "/projects/github/#{full_name}"
+    end
   end
 
   class Deadline
