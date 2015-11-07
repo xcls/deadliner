@@ -12,7 +12,7 @@ RSpec.feature "Viewing projects", type: :feature do
       body: GithubResponses.repositories,
       headers: { 'Content-Type'=>'application/json' }
     )
-    stub_request(:get, "https://api.github.com/repos/octocat/Hello-World/milestones").to_return(
+    stub_request(:get, "https://api.github.com/repos/octocat/Hello-World/milestones?state=open").to_return(
       status: 200,
       body: GithubResponses.milestones,
       headers: { 'Content-Type'=>'application/json' }
