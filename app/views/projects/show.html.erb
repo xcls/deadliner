@@ -7,7 +7,7 @@
     <p>State: <%= deadline.state %></p>
     <% if deadline.due_on %>
       <p>Is due on <strong><%= deadline.due_on.to_formatted_s(:long) %></strong></p>
-      <p>Which is <strong><%= distance_of_time_in_words_to_now(deadline.due_on) %></strong> from now</p>
+      <p>Which is <strong><%= ago_or_from_now(deadline.due_on) %></strong></p>
     <% end %>
     <p>There are <%= deadline.open_issues %> open issues and <%= deadline.closed_issues %> closed issues, so it's <%= deadline.completion_percentage %>% complete.</p>
   </article>

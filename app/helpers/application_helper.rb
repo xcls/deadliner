@@ -12,4 +12,10 @@ module ApplicationHelper
       content_tag :div, "No time specified"
     end
   end
+
+  def ago_or_from_now(time)
+    in_words = distance_of_time_in_words_to_now(time)
+    suffix = if Time.now <= time then "from now" else "ago" end
+    "#{in_words} #{suffix}"
+  end
 end
