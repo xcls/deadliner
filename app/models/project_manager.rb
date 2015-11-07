@@ -5,12 +5,16 @@ class ProjectManager
     @user = user
   end
 
-  def projects
-    client.repos.map { |repo| Project.new(repo) }
+  def projects(page: 1)
+    client.repos(nil, per_page: 100, page: page).map { |repo| Project.new(repo) }
   end
 
   def find_project(id)
     client.repo(id)
+  end
+
+  def deadlines_for(id)
+    client.list_milestones(id)
   end
 
   private
@@ -29,5 +33,9 @@ class ProjectManager
     def task_count
       original.open_issues_count
     end
+  end
+
+  class Deadline
+    include Charlatan.new(:original)
   end
 end

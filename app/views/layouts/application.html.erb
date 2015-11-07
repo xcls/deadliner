@@ -10,6 +10,7 @@
   <h1><%= link_to 'Deadliner', root_path %></h1>
   <p>
   <% if current_user %>
+    <%= link_to "Projects", projects_path %>
     Logged in as <%= current_user.email %>.
     <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
   <% else %>

@@ -16,6 +16,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'charlatan'
 gem 'devise'
+gem 'kaminari'
 gem 'octokit'
 gem 'omniauth-github'
 gem 'puma'

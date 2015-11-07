@@ -1,5 +1,4 @@
 <h2>Projects</h2>
-<%= raw ap(projects.first) %>
 <% projects.each do |project| %>
   <article>
     <h3><%= link_to project.full_name, project_path(project.id) %></h3>
