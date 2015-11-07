@@ -23,6 +23,9 @@ gem 'puma'
 gem 'rails_12factor', group: :production
 gem 'rdiscount'
 
+gem 'simple_form', '~> 3.2'
+gem 'has_secure_token'
+
 group :test do
   gem 'simplecov', require: false
   gem 'webmock'
