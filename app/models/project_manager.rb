@@ -17,5 +17,9 @@ class ProjectManager
 
   class Project
     include Charlatan.new(:original)
+
+    def task_count
+      original.open_issues_count
+    end
   end
 end

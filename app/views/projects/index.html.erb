@@ -1,2 +1,8 @@
 <h2>Projects</h2>
-<%= raw ap(projects.map(&:name).sort) %>
+<%= raw ap(projects.first) %>
+<% projects.each do |project| %>
+  <article>
+    <h3><%= project.full_name %></h3>
+    <p>Open tasks: <%= project.task_count %>
+  <article>
+<% end %>
