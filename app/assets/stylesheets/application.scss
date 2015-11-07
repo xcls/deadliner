@@ -41,7 +41,6 @@ $fonts_url: 'fonts/';
 }
 
 
-
 @font-face {
   font-family: 'input_mono_narrow_bold';
   src: url($fonts_url + 'InputMonoNarrow-Bold.woff2') format('woff2'),
@@ -124,7 +123,10 @@ body {
   font-size: 16px;
   line-height: 26px;
   color: #758081;
-  max-width: 460px;
+  width: 440px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .project-share {
@@ -134,3 +136,113 @@ body {
   background: #F2F2F2 image-url('link.svg') no-repeat 50% 50%;
   border-radius: 50%;
 }
+
+.milestones-header {
+  display: flex;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.milestones-project {
+  display: flex;
+  align-items: center;
+}
+
+.milestones-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.milestones-project-name {
+  font-size: 20px;
+  color: #fff;
+  font-weight: bold;
+  margin-left: 8px;
+}
+
+.milestones-view-projects {
+  display: block;
+  line-height: 32px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border: 2px solid #FFEF8D;
+  color: #fff;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.milesone-featured-wrapper {
+  background-color: #B5DEE1;
+  background-image: image-url('scene.svg'), image-url('birds.svg');
+  background-position: 50% 100%, 50% 270px;
+  background-repeat: no-repeat;
+  height: 600px;
+  text-align: center;
+  color: #fff;
+  padding-top: 30px;
+  margin-top: -68px;
+}
+
+.milesone-featured {
+
+}
+
+.milesone-featured-name {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.milesone-featured-issues {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.milesone-featured-progress {
+  width: 48px;
+  height: 48px;
+  line-height: 48px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.1);
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+}
+
+.milesone-featured-countdown {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.milesone-featured-interval {
+  width: 180px;
+  margin-right: 52px;
+
+  &:first-child {
+
+    .milesone-featured-number {
+      color: #FFEF8D;
+    }
+  }
+}
+
+.milesone-featured-number {
+  font-size: 144px;
+  line-height: 148px;
+  font-family: $input_mono_narrow_bold;
+}
+
+.milesone-featured-label {
+  font-size: 24px;
+  margin-top: -22px;
+}
+

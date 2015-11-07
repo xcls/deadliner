@@ -10,7 +10,8 @@ class ProjectsController < ApplicationController
 
   def show
     uid = params[:uid] || params[:id]
-    render locals: {
+    render layout: 'simple', locals: {
+      github_user: pm.github_user,
       project: pm.find_project(uid),
       deadlines: pm.deadlines_for(uid),
     }
