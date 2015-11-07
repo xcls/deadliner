@@ -40,6 +40,12 @@ RSpec.feature "Viewing projects", type: :feature do
       body: GithubResponses.issues,
       headers: { 'Content-Type'=>'application/json' }
     )
+
+    stub_request(:get, "https://api.github.com/user").to_return(
+      status: 200,
+      body: GithubResponses.user,
+      headers: { 'Content-Type'=>'application/json' }
+    )
   end
 
   before :each do
