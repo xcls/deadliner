@@ -7,26 +7,28 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <h1><%= link_to 'Deadliner', root_path %></h1>
-  <p>
-  <% if current_user %>
-    <%= link_to "Projects", projects_path %>
-    Logged in as <%= current_user.email %>.
-    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-  <% else %>
-    <%= link_to "Sign in with Github",
-      user_omniauth_authorize_path(:github) %>
-  <% end %>
-  </p>
+  <div class="container">
+    <h1><%= link_to 'Deadliner', root_path %></h1>
+    <p>
+    <% if current_user %>
+      <%= link_to "Projects", projects_path %>
+      Logged in as <%= current_user.email %>.
+      <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+    <% else %>
+      <%= link_to "Sign in with Github",
+        user_omniauth_authorize_path(:github) %>
+    <% end %>
+    </p>
 
-  <% if notice %>
-    <p><strong style='color: blue'><%= notice %></strong></p>
-  <% end %>
+    <% if notice %>
+      <p><strong style='color: blue'><%= notice %></strong></p>
+    <% end %>
 
-  <% if alert %>
-    <p><strong style='color: red'><%= alert %></strong></p>
-  <% end %>
+    <% if alert %>
+      <p><strong style='color: red'><%= alert %></strong></p>
+    <% end %>
 
-  <%= yield %>
+    <%= yield %>
+  </div>
 </body>
 </html>

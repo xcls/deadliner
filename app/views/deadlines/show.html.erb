@@ -4,7 +4,7 @@
 <% open_tasks.each do |task| %>
   <h5><%= task.title %></h5>
   <p>State: <%= task.state %></p>
-  <%= simple_format task.body %>
+  <%= sanitize task.description_html %>
 <% end %>
 
 <hr>
@@ -13,5 +13,5 @@
 <% closed_tasks.each do |task| %>
   <h5><%= task.title %></h5>
   <p>State: <%= task.state %></p>
-  <%= simple_format task.body %>
+  <%= raw task.description_html %>
 <% end %>

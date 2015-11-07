@@ -71,6 +71,11 @@ class ProjectManager
     def name
       original.title
     end
+
+    # TODO: We probably don't want to show the description?
+    def description_html
+      @description_html ||= RDiscount.new(original.body).to_html
+    end
   end
 
   # Designed to work with Kaminari's `paginate`

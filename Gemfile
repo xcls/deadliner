@@ -21,6 +21,7 @@ gem 'octokit'
 gem 'omniauth-github'
 gem 'puma'
 gem 'rails_12factor', group: :production
+gem 'rdiscount'
 
 group :test do
   gem 'webmock'
