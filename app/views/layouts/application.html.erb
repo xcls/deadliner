@@ -8,6 +8,23 @@
 </head>
 <body>
   <h1><%= link_to 'Deadliner', root_path %></h1>
+  <p>
+  <% if current_user %>
+    Logged in as <%= current_user.email %>.
+  <% else %>
+    <%= link_to "Sign in with Github",
+      user_omniauth_authorize_path(:github) %>
+  <% end %>
+  </p>
+
+  <p>
+  <%= notice %>
+  <strong style='color: red'><%= alert %></strong>
+  </p>
+
+  <pre>
+  ENV: <%= Rails.env %>
+  </pre>
   <%= yield %>
 </body>
 </html>
