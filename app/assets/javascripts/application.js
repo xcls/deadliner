@@ -15,3 +15,4 @@
 //= require turbolinks
 //= require jquery.countdown.min.js
 //= require_tree ./app
+//= require zeroclipboard
