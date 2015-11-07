@@ -11,11 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151107105104) do
+ActiveRecord::Schema.define(version: 20151107183320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
+
+  create_table "dashboards", force: :cascade do |t|
+    t.string   "project_identifier"
+    t.integer  "user_id"
+    t.string   "link_slug"
+    t.string   "password"
+    t.boolean  "show_tasks"
+    t.boolean  "published"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "dashboards", ["user_id"], name: "index_dashboards_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                          null: false
@@ -35,4 +48,5 @@ ActiveRecord::Schema.define(version: 20151107105104) do
   add_index "users", ["provider"], name: "index_users_on_provider", using: :btree
   add_index "users", ["uid"], name: "index_users_on_uid", using: :btree
 
+  add_foreign_key "dashboards", "users"
 end
