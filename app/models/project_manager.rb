@@ -6,7 +6,7 @@ class ProjectManager
   end
 
   def projects(page: 1)
-    client.repos(nil, per_page: 100, page: page).map { |repo| Project.new(repo) }
+    wrap_with Project, client.repos(nil, per_page: 100, page: page)
   end
 
   def find_project(id)
@@ -14,7 +14,7 @@ class ProjectManager
   end
 
   def deadlines_for(id)
-    client.list_milestones(id, state: :open).map { |m| Deadline.new(m) }
+    wrap_with Deadline, client.list_milestones(id, state: :open)
   end
 
   def find_deadline(project_id, id)
@@ -33,6 +33,10 @@ class ProjectManager
 
   def client
     @client ||= Octokit::Client.new(access_token: user.github_token)
+  end
+
+  def wrap_with(klass, xs)
+    xs.map { |m| klass.new(m) }
   end
 
   class Project
