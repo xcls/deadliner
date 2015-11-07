@@ -12,10 +12,10 @@
     <td><%= link_to project.full_name, project_path(project.id) %></td>
     <td><%= project.task_count %></td>
     <td>
-      <% if dashboard = Dashboard.find_by_project_identifier(project.full_name)  %>
-        <a data-clipboard-text='<%= dashboard_url(link_slug: dashboard.link_slug)%>' id='d_clip_button' title='Click me to copy to clipboard.'>Copy link <a/>
+      <% if project.dashboard  %>
+        <a data-clipboard-text='<%= dashboard_url(link_slug: project.dashboard.link_slug)%>' id='d_clip_button' title='Click me to copy to clipboard.'>Copy link <a/>
       <% else %>
-          <%= link_to "Share", new_dashboard_path(dashboard) %>
+          <%= link_to "Share", new_dashboard_path(project_identifier: project.full_name) %>
       <% end %>
     </td>
   </tr>

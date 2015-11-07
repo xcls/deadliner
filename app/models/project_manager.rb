@@ -52,6 +52,10 @@ class ProjectManager
     def task_count
       original.open_issues_count
     end
+
+    def dashboard
+      Dashboard.find_by_project_identifier(original.full_name)
+    end
   end
 
   class Deadline
