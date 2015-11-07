@@ -7,9 +7,14 @@ RSpec.feature "Viewing projects", type: :feature do
     WebMock.disable_net_connect!
     login_as user, scope: :user
 
-    stub_request(:get, "https://api.github.com/user/repos").to_return(
+    stub_request(:get, %r|https://api.github.com/user/repos(\?.*)?|).to_return(
       status: 200,
       body: GithubResponses.repositories,
+      headers: { 'Content-Type'=>'application/json' }
+    )
+    stub_request(:get, "https://api.github.com/repos/octocat/Hello-World/milestones").to_return(
+      status: 200,
+      body: GithubResponses.milestones,
       headers: { 'Content-Type'=>'application/json' }
     )
   end
