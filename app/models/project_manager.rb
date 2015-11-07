@@ -6,7 +6,11 @@ class ProjectManager
   end
 
   def projects(page: 1)
-    wrap_with Project, client.repos(nil, page: page)
+    wrap_with Project, client.repos(nil, {
+      page: page,
+      sort: :pushed,
+      direction: :desc
+    })
   end
 
   def find_project(id)
