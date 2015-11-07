@@ -1,4 +1,7 @@
 <%= simple_form_for @dashboard do |f| %>
+  <%= f.hidden_field :project_identifier, value: @project_identifier %>
+  <%= f.label "Password protect" %>
+  <%= check_box_tag "Password protect" %>
   <%= f.input "password" %>
   <%= f.label "Show tasks" %>
   <%= f.check_box :show_tasks %>

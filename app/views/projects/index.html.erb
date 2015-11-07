@@ -11,6 +11,9 @@
   <tr>
     <td><%= link_to project.full_name, project_path(project.id) %></td>
     <td><%= project.task_count %></td>
+    <td>
+      <%= link_to "Share", new_dashboard_path(project_identifier: project.full_name) %>
+    </td>
   </tr>
 <% end %>
   </tbody>
