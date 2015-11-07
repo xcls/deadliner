@@ -1,4 +1,8 @@
 <h2>Deadline: <%= deadline.name %></h2>
+<% if deadline.due_on %>
+  <p>Due on: <%= deadline.due_on.to_i.to_s %></p>
+<% end %>
+<%= countdown(deadline.due_on) %>
 
 <h4>Tasks</h4>
 <% tasks.each do |task| %>
