@@ -21,12 +21,9 @@ class ProjectManager
     Deadline.new(client.milestone(project_id, id))
   end
 
-  def open_tasks_for(project_id, deadline_id)
-    wrap_with Task, client.list_issues(project_id, milestone: deadline_id, state: :open)
-  end
-
-  def closed_tasks_for(project_id, deadline_id)
-    wrap_with Task, client.list_issues(project_id, milestone: deadline_id, state: :closed)
+  def tasks_for(project_id, deadline_id)
+    issues_list = client.list_issues(project_id, milestone: deadline_id, state: :all)
+    wrap_with Task, issues_list.sort_by { |issue| issue[:state] }.reverse
   end
 
   private

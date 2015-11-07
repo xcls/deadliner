@@ -1,17 +1,8 @@
 <h2>Deadline: <%= deadline.name %></h2>
 
-<h4>Open tasks</h4>
-<% open_tasks.each do |task| %>
+<h4>Tasks</h4>
+<% tasks.each do |task| %>
   <h5><%= task.title %></h5>
   <p>State: <%= task.state %></p>
   <%= sanitize task.description_html %>
-<% end %>
-
-<hr>
-
-<h4>Closed tasks</h4>
-<% closed_tasks.each do |task| %>
-  <h5><%= task.title %></h5>
-  <p>State: <%= task.state %></p>
-  <%= raw task.description_html %>
 <% end %>
