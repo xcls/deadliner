@@ -10,44 +10,37 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require_self
  */
+
+// ----------------------------------------------------------------------------
+// Variables
+// ----------------------------------------------------------------------------
+$input_mono_narrow_bold: "input_mono_narrow_bold", monospace;
+$fonts_url_fallback: 'fonts/';
+// $fonts_url: 'http://d2zrsw3u8lkijg.cloudfront.net/fonts/';
+$fonts_url: 'fonts/';
+
+// ----------------------------------------------------------------------------
+// Imports
+// ----------------------------------------------------------------------------
+@import "components/*";
 
 .container {
   width: 800px;
   margin: 0 auto;
-}
 
-a {
-  color: #08E;
-  text-decoration: none;
+  a {
+    color: #08E;
+    text-decoration: none;
 
-  &:hover {
-    text-decoration: underline;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
-table {
-  border-collapse: collapse;
-}
 
-tbody {
-  tr:hover {
-    background-color: #eee;
-  }
-}
-
-td {
-  padding: 10px;
-}
-
-$input_mono_narrow_bold: "input_mono_narrow_bold", monospace;
-
-$fonts_url_fallback: 'fonts/';
-
-// $fonts_url: 'http://d2zrsw3u8lkijg.cloudfront.net/fonts/';
-$fonts_url: 'fonts/';
 
 @font-face {
   font-family: 'input_mono_narrow_bold';
@@ -85,11 +78,13 @@ body {
   width: 520px;
   margin: 0 auto;
 }
+
 .projects-avatar {
   border-radius: 50%;
   width: 96px;
   height: 96px;
 }
+
 .projects-instructions {
   font-size: 18px;
   font-weight: bold;
@@ -97,11 +92,13 @@ body {
   margin-top: 10px;
   margin-bottom: 40px;
 }
+
 .projects {
   width: 520px;
   margin: 0 auto;
   border-top: 1px solid #EDEDED;
 }
+
 .project {
   border-bottom: 1px solid #EDEDED;
   padding-top: 12px;
@@ -110,6 +107,7 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+
 .project-name {
   font-size: 24px;
   font-weight: bold;
@@ -121,81 +119,18 @@ body {
     text-decoration: none;
   }
 }
+
 .project-description {
   font-size: 16px;
   line-height: 26px;
   color: #758081;
   max-width: 460px;
 }
+
 .project-share {
   width: 40px;
   height: 40px;
   display: block;
   background: #F2F2F2 image-url('link.svg') no-repeat 50% 50%;
   border-radius: 50%;
-}
-
-.pagination {
-  font-size: 16px;
-  font-weight: bold;
-  display: flex;
-  width: 520px;
-  margin-top: 40px;
-  margin-left: auto;
-  margin-right: auto;
-
-  .first,
-  .last,
-  .prev,
-  .next {
-
-    a {
-      display: block;
-      min-width: 48px;
-      padding: 0 8px;
-      box-sizing: border-box;
-      border: 2px solid #EDEDED;
-      text-decoration: none;
-      color: #737F98;
-      text-align: center;
-      line-height: 42px;
-      margin: 0 4px;
-
-      &:hover {
-        border: 2px solid #B5DEE1;
-      }
-    }
-  }
-  .page {
-
-    a {
-      display: block;
-      min-width: 48px;
-      padding: 0 8px;
-      box-sizing: border-box;
-      border: 2px solid #EDEDED;
-      text-decoration: none;
-      color: #737F98;
-      text-align: center;
-      line-height: 42px;
-      margin: 0 4px;
-
-      &:hover {
-        border: 2px solid #B5DEE1;
-      }
-    }
-  }
-  .current {
-    line-height: 42px;
-    display: block;
-    min-width: 35px;
-    padding: 0 8px;
-    background: #B5DEE1;
-    color: #fff;
-    text-align: center;
-    margin: 0 4px;
-  }
-  .first {
-    margin-left: -4px;
-  }
 }
