@@ -21,6 +21,14 @@ class ProjectManager
     Deadline.new(client.milestone(project_id, id))
   end
 
+  def open_tasks_for(project_id, deadline_id)
+    client.list_issues(project_id, milestone: deadline_id, state: :open).map { |m| Task.new(m) }
+  end
+
+  def closed_tasks_for(project_id, deadline_id)
+    client.list_issues(project_id, milestone: deadline_id, state: :closed).map { |m| Task.new(m) }
+  end
+
   private
 
   def client
@@ -53,6 +61,10 @@ class ProjectManager
 
   class Task
     include Charlatan.new(:original)
+
+    def name
+      original.title
+    end
 
   end
 end
