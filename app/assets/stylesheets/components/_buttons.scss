@@ -1,0 +1,30 @@
+.btn {
+  cursor: pointer;
+  display: inline-block;
+  line-height: 32px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border: 2px solid #08F;
+  color: #444;
+  background-color: #fff;
+  text-decoration: none;
+  box-sizing: border-box;
+
+  &.default {
+    border: 2px solid #81848A;
+  }
+
+  &.primary {
+    border: 2px solid #08F;
+  }
+
+  &:hover {
+    background: #eee;
+  }
+
+  &:focus, &:active {
+    background: #ddd;
+  }
+}
