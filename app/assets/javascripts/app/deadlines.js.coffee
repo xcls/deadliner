@@ -12,8 +12,9 @@ $(document).on 'ready page:load', ->
 
 $(document).on 'ready page:load', ->
   updateCountdown = (e) ->
+    prefix = if e.elapsed then "-" else ""
     $this = $(this)
-    $this.find('.js-countdown-days').text(e.strftime("%D"));
+    $this.find('.js-countdown-days').text(e.strftime("#{prefix}%D"));
     $this.find('.js-countdown-hours').text(e.strftime("%H"));
     $this.find('.js-countdown-minutes').text(e.strftime("%M"));
 

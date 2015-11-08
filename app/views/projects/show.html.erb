@@ -26,17 +26,18 @@
           <% elsif deadline.no_due_date? %>
             <div class="milestone-message-no-date">No due date</div>
           <% else %>
+            <% number_class = deadline.overdue? ? 'milestone-number-overdue milestone-number' : 'milestone-number' %>
             <ul class="milestone-countdown js-countdown-big" data-epoch-seconds="<%= deadline.due_on.to_i %>">
               <li class="milestone-interval">
-                <div class="milestone-number js-countdown-days">00</div>
+                <div class="<%= number_class %> js-countdown-days">00</div>
                 <div class="milestone-label">days</div>
               </li>
               <li class="milestone-interval">
-                <div class="milestone-number js-countdown-hours">00</div>
+                <div class="<%= number_class %> js-countdown-hours">00</div>
                 <div class="milestone-label">hours</div>
               </li>
               <li class="milestone-interval">
-                <div class="milestone-number js-countdown-minutes">01</div>
+                <div class="<%= number_class %> js-countdown-minutes">01</div>
                 <div class="milestone-label">mins</div>
               </li>
             </ul>

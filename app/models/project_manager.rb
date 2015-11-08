@@ -92,6 +92,10 @@ class ProjectManager
     def no_due_date?
       due_on.blank?
     end
+
+    def overdue?
+      !no_due_date? && (Time.now > due_on.to_time)
+    end
   end
 
   class Task
