@@ -3,20 +3,16 @@ class DashboardsController < ApplicationController
 
   def show
     dashboard = Dashboard.find_by!(slug: params[:slug])
-
     unless dashboard.published?
       return redirect_to root_url, notice: "Dashboard unavailable"
     end
+    return unless basic_authenticate(dashboard)
 
-    if authenticated_for?(dashboard)
-      pm = ProjectManager.new(dashboard.user)
-      render 'projects/show', layout: 'simple', locals: {
-        project: pm.find_project(dashboard.project_uid),
-        deadlines: pm.deadlines_for(dashboard.project_uid),
-      }
-    else
-      redirect_to login_dashboard_path(dashboard.slug)
-    end
+    pm = ProjectManager.new(dashboard.user)
+    render 'projects/show', layout: 'simple', locals: {
+      project: pm.find_project(dashboard.project_uid),
+      deadlines: pm.deadlines_for(dashboard.project_uid),
+    }
   end
 
   def edit
@@ -52,17 +48,6 @@ class DashboardsController < ApplicationController
     render locals: { slug: params[:slug] }
   end
 
-  def authenticate
-    dashboard = Dashboard.find_by!(slug: params[:slug])
-    if params[:dashboard_login][:password] == dashboard.password
-      session[:authenticated_for] ||= Set.new
-      session[:authenticated_for].add(dashboard.slug)
-      redirect_to show_dashboard_path(dashboard.slug)
-    else
-      redirect_to root_url, notice: t('notice.invalid_password')
-    end
-  end
-
   private
 
   def dashboard_params
@@ -70,8 +55,17 @@ class DashboardsController < ApplicationController
       .permit(:password, :show_tasks, :published, :project_uid, :slug)
   end
 
-  def authenticated_for?(dashboard)
+  def basic_authenticate(dashboard)
     return true if dashboard.password.blank?
-    (session[:authenticated_for] || []).include?(dashboard.slug)
+    success = authenticate_with_http_basic { |uid, pass|
+      dashboard.slug == uid && dashboard.password == pass
+    }
+    return true if success
+    request_http_basic_authentication("The 'User Name' is #{dashboard.slug}")
+    false
+  end
+
+  def user_and_pass
+    ActionController::HttpAuthentication::Basic::user_name_and_password(request)
   end
 end

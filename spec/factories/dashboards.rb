@@ -4,7 +4,7 @@ FactoryGirl.define do
     user
     slug { project_uid.underscore }
     password { SecureRandom.hex(5) }
-    show_tasks false
-    published false
+    show_tasks { [true, false].sample }
+    published { [true, false].sample }
   end
 end
