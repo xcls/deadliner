@@ -1,4 +1,5 @@
-<div class="milestone-featured-wrapper <%= 'milestone-featured-completed-wrapper' if deadline.completed? %>">
+<div class="js-dark-knight milestone-featured-wrapper <%= 'milestone-featured-completed-wrapper' if deadline.completed? %>"
+  <% unless deadline.no_due_date? %>data-due-in-seconds="<%= deadline.due_in_seconds %>"<% end %>>
   <div class="milestone-featured">
     <h2 class="milestone-featured-name"><%= deadline.name %></h2>
     <div class="milestone-featured-issues">

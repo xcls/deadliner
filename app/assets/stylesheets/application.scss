@@ -252,6 +252,16 @@ body {
 }
 .milestone-featured-wrapper {
   background-color: #B5DEE1;
+  background-repeat: no-repeat;
+  height: 600px;
+  text-align: center;
+  color: #fff;
+  margin-top: -68px;
+}
+.milestone-featured-completed-wrapper {
+  background-color: #88C29D;
+}
+.milestone-featured {
   background-image: image-url('scene.svg'), image-url('birds.svg');
   background-position: 50% 100%, 50% 270px;
   background-repeat: no-repeat;
@@ -259,13 +269,6 @@ body {
   text-align: center;
   color: #fff;
   padding-top: 30px;
-  margin-top: -68px;
-}
-.milestone-featured-completed-wrapper {
-  background-color: #88C29D;
-}
-.milestone-featured {
-  text-align: center;
 }
 .milestone-featured-name {
   font-size: 24px;
@@ -799,4 +802,3 @@ body {
   padding-top: 60px;
   padding-bottom: 60px;
 }
-
