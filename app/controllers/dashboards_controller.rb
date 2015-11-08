@@ -9,10 +9,12 @@ class DashboardsController < ApplicationController
     return unless basic_authenticate(dashboard)
 
     pm = ProjectManager.new(dashboard.user)
-    render 'projects/show', layout: 'simple', locals: {
+    page = ProjectPage.new(
+      dashboard: dashboard,
       project: pm.find_project(dashboard.project_uid),
       deadlines: pm.deadlines_for(dashboard.project_uid),
-    }
+    )
+    render 'projects/show', layout: 'simple', locals: { page: page }
   end
 
   def edit

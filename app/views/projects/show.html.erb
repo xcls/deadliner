@@ -1,10 +1,17 @@
-<%= render 'deadlines/header', project: project, deadline: deadlines.try(:first) %>
+<%= render 'deadlines/header', {
+  show_projects: page.internal?,
+  project: page.project,
+  deadline: page.deadlines.first
+} %>
 
 <div class="milestones-wrapper">
   <ul class="milestones">
-    <% deadlines.each do |deadline| %>
+    <% page.deadlines.each do |deadline| %>
       <li class="milestone">
-        <%= link_to deadline_path(project_id: project.full_name, id: deadline.number) do %>
+        <%= link_to deadline_path(
+          project_id: page.project.full_name,
+          id: deadline.number
+        ) do %>
           <h3 class="milestone-name"><%= deadline.name %></h3>
           <ul class="milestone-countdown js-countdown-big" data-epoch-seconds="<%= deadline.due_on.to_i %>">
             <li class="milestone-interval">

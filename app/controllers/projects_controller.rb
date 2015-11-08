@@ -10,9 +10,10 @@ class ProjectsController < ApplicationController
 
   def show
     uid = params[:uid] || params[:id]
-    render layout: 'simple', locals: {
+    page = ProjectPage.new(
       project: pm.find_project(uid),
       deadlines: pm.deadlines_for(uid),
-    }
+    )
+    render layout: 'simple', locals: { page: page }
   end
 end
