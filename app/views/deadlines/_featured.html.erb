@@ -8,6 +8,7 @@
     <div class="milestone-featured-progress">
       <%= deadline.completion_percentage.round %>%
     </div>
+    <%= link_to path_for_deadline, class: 'countdown-link' do %>
     <ul class="milestone-featured-countdown js-countdown-big" data-epoch-seconds="<%= deadline.due_on.to_i %>">
       <li class="milestone-featured-interval">
         <div class="milestone-featured-number js-countdown-days">00</div>
@@ -22,5 +23,6 @@
         <div class="milestone-featured-label">minutes</div>
       </li>
     </ul>
+    <% end %>
   </div>
 </div>

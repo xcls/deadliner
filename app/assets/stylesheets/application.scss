@@ -33,18 +33,9 @@ $fonts_url: 'fonts/';
 @import "nprogress";
 @import "components/*";
 
-.container {
-  width: 800px;
-  margin: 0 auto;
-
-  a {
-    color: #08E;
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
+.countdown-link {
+  text-decoration: none;
+  color: inherit;
 }
 
 
@@ -65,6 +56,7 @@ html, body, div, p, h1, h2, h3, h4, ul, li, img, input {
 html {
   -webkit-text-size-adjust: none;
 }
+
 ul {
   list-style: none;
 }
@@ -245,6 +237,7 @@ body {
 
 .milestones-wrapper {
   background-color: #F8F7F2;
+  padding-bottom: 100px; // for the railsrumble banner
 }
 .milestones {
   padding-top: 80px;
@@ -436,6 +429,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   padding-top: 70px;
+  padding-bottom: 100px; // for the railsrumble banner
 }
 .issues-stats {
   display: flex;
@@ -502,4 +496,165 @@ body {
   width: 720px;
   margin-left: auto;
   margin-right: auto;
+}
+
+
+.site-header {
+  height: 676px;
+  background: #7379B7 image-url('preview.png') no-repeat 50% 100%;
+  color: #fff;
+  padding-top: 68px;
+  box-sizing: border-box;
+}
+.logo {
+
+  a {
+    display: block;
+    width: 232px;
+    height: 36px;
+    background: asset-url('deadliner-logo.svg') no-repeat 0 0;
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.definition {
+  font-size: 24px;
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 40px;
+}
+.call-to-action {
+  display: flex;
+  justify-content: center;
+}
+.sign-in-github {
+  background: #C784A4 asset-url('github-logo.svg') no-repeat 18px 50%;
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+  display: block;
+  width: 133px;
+  height: 44px;
+  line-height: 38px;
+  margin-right: 12px;
+  text-align: center;
+  box-sizing: border-box;
+  border: 2px solid #C784A4;
+  padding-left: 32px;
+}
+.see-a-demo {
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+  display: block;
+  width: 133px;
+  height: 44px;
+  line-height: 38px;
+  border: 2px solid #9D92A9;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.main {
+  background-color: #F8F7F2;
+}
+
+.features {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-top: 60px;
+}
+.feature {
+  width: 300px;
+  text-align: center;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.feature-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #84858C;
+  margin-top: 5px;
+}
+.feature-description {
+  font-size: 16px;
+  color: #84858C;
+  line-height: 24px;
+  margin-top: 8px;
+}
+.separator {
+  width: 260px;
+  border: 0;
+  height: 1px;
+  background-color: #E5E4DE;
+  margin-top: 60px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.give-it-a-try {
+  margin-top: 60px;
+  text-align: center;
+
+  h2 {
+    font-size: 42px;
+    font-weight: bold;
+    color: #84858C;
+    margin-bottom: 30px;
+  }
+}
+.see-a-demo-alt {
+  color: #9D92A9;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+  display: block;
+  width: 133px;
+  height: 44px;
+  line-height: 38px;
+  border: 2px solid #9D92A9;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.quote {
+  margin-top: 60px;
+  padding-bottom: 100px;
+}
+.quote-body {
+  font-size: 24px;
+  line-height: 36px;
+  color: #84858C;
+  max-width: 460px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.quote-author {
+  font-size: 16px;
+  font-weight: bold;
+  color: #84858C;
+  max-width: 460px;
+  text-align: center;
+  margin-top: 16px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer {
+  font-size: 14px;
+  line-height: 24px;
+  color: #84858C;
+  text-align: center;
+  max-width: 360px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 60px;
+  padding-bottom: 60px;
 }
