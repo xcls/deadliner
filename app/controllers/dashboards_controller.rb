@@ -48,17 +48,6 @@ class DashboardsController < ApplicationController
     render locals: { slug: params[:slug] }
   end
 
-  def authenticate
-    dashboard = Dashboard.find_by!(slug: params[:slug])
-    if params[:dashboard_login][:password] == dashboard.password
-      session[:authenticated_for] ||= Set.new
-      session[:authenticated_for].add(dashboard.slug)
-      redirect_to show_dashboard_path(dashboard.slug)
-    else
-      redirect_to root_url, notice: t('notice.invalid_password')
-    end
-  end
-
   private
 
   def dashboard_params
@@ -72,7 +61,7 @@ class DashboardsController < ApplicationController
       dashboard.slug == uid && dashboard.password == pass
     }
     return true if success
-    request_http_basic_authentication(dashboard.slug)
+    request_http_basic_authentication("The 'User Name' is #{dashboard.slug}")
     false
   end
 
