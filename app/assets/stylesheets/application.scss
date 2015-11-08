@@ -49,9 +49,9 @@ $fonts_url: 'fonts/';
 
 @font-face {
   font-family: 'input_mono_narrow_bold';
-  src: url($fonts_url + 'InputMonoNarrow-Bold.woff2') format('woff2'),
-       url($fonts_url + 'InputMonoNarrow-Bold.woff') format('woff'),
-       url($fonts_url_fallback + 'InputMonoNarrow-Bold.ttf') format('truetype');
+  src: asset-url($fonts_url + 'InputMonoNarrow-Bold.woff2') format('woff2'),
+       asset-url($fonts_url + 'InputMonoNarrow-Bold.woff') format('woff'),
+       asset-url($fonts_url_fallback + 'InputMonoNarrow-Bold.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
