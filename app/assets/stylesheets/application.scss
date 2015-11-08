@@ -304,6 +304,10 @@ body {
 
     .milestone-featured-number {
       color: #FFEF8D;
+
+      &.milestone-featured-number-overdue {
+        color: #EB9489;
+      }
     }
   }
   &:last-child {
@@ -314,6 +318,9 @@ body {
   font-size: 144px;
   line-height: 148px;
   font-family: $input_mono_narrow_bold;
+}
+.milestone-featured-number-overdue {
+  color: #EB9489;
 }
 .milestone-featured-label {
   font-size: 24px;

@@ -77,10 +77,6 @@ class ProjectManager
   class Deadline
     include Charlatan.new(:original)
 
-    def initialize(*args)
-      super(*args)
-    end
-
     def name
       original.title
     end

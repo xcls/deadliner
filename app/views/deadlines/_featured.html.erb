@@ -25,17 +25,18 @@
       </div>
     <% else %>
       <%= link_to path_for_deadline, class: 'countdown-link' do %>
+      <% number_class = deadline.overdue? ? 'milestone-featured-number-overdue milestone-featured-number' : 'milestone-featured-number' %>
       <ul class="milestone-featured-countdown js-countdown-big" data-epoch-seconds="<%= deadline.due_on.to_i %>">
         <li class="milestone-featured-interval">
-          <div class="milestone-featured-number js-countdown-days">00</div>
+          <div class="<%= number_class %> js-countdown-days">00</div>
           <div class="milestone-featured-label">days</div>
         </li>
         <li class="milestone-featured-interval">
-          <div class="milestone-featured-number js-countdown-hours">00</div>
+          <div class="<%= number_class %> js-countdown-hours">00</div>
           <div class="milestone-featured-label">hours</div>
         </li>
         <li class="milestone-featured-interval">
-          <div class="milestone-featured-number js-countdown-minutes">00</div>
+          <div class="<%= number_class %> js-countdown-minutes">00</div>
           <div class="milestone-featured-label">minutes</div>
         </li>
       </ul>
