@@ -3,9 +3,15 @@
   $labelWidth: $w / 2;
   width: $w;
   margin: 0 auto;
+  border-top: 1px solid #EDEDED;
+
+  h3 {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #81848A;
+  }
 
   form {
-    border-top: 1px solid #EDEDED;
 
     div.input {
       margin-bottom: 7px;

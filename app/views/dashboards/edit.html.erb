@@ -5,8 +5,11 @@
   </p>
 </div>
 
+
 <div class="dashboard-form">
+  <h3>Options</h3>
   <%= render 'form', dashboard: dashboard %>
+  <h3>Sharing link</h3>
   <% if dashboard.valid? %>
     <div class="copy-url">
       <input type="text" value="<%= show_dashboard_url(dashboard.link_slug) %>" />
@@ -15,6 +18,8 @@
         Copy
       </a>
     </div>
+  <% else %>
+    <p>Save the dashboard first.</p>
   <% end %>
 <div>
 
