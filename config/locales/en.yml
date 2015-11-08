@@ -23,7 +23,7 @@ en:
   simple_form:
     labels:
       dashboard:
-        project_identifier: 'Project'
+        project_uid: 'Project'
         password: 'Password'
     hints:
       dashboard:

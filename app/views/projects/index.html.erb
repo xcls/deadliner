@@ -15,7 +15,7 @@
           <%= project.description %>
         </div>
       </div>
-      <%= link_to "", edit_dashboard_path(project_identifier: project.full_name), class: 'project-share' %>
+      <%= link_to "", edit_dashboard_path(project_uid: project.full_name), class: 'project-share' %>
     </li>
   <% end %>
 </ul>

@@ -5,14 +5,14 @@ class DashboardsController < ApplicationController
     dashboard = Dashboard.find_by_link_slug(params[:link_slug])
     pm = ProjectManager.new(dashboard.user)
     render locals: {
-      project: pm.find_project(dashboard.project_identifier),
-      deadlines: pm.deadlines_for(dashboard.project_identifier),
+      project: pm.find_project(dashboard.project_uid),
+      deadlines: pm.deadlines_for(dashboard.project_uid),
     }
   end
 
   def edit
     dashboard = current_user.dashboards
-      .where(project_identifier: params[:project_identifier])
+      .where(project_uid: params[:project_uid])
       .first_or_create!
     render locals: { dashboard: dashboard }
   end
@@ -20,7 +20,7 @@ class DashboardsController < ApplicationController
   def update
     dashboard = current_user.dashboards.find(params[:id])
     if dashboard.update(dashboard_params)
-      redirect_to edit_dashboard_path(project_identifier: dashboard.project_identifier),
+      redirect_to edit_dashboard_path(project_uid: dashboard.project_uid),
         notice: t('notice.saved')
     else
       render :edit, locals: { dashboard: dashboard }
@@ -40,6 +40,6 @@ class DashboardsController < ApplicationController
 
   def dashboard_params
     params.require(:dashboard)
-      .permit(:password, :show_tasks, :published, :project_identifier)
+      .permit(:password, :show_tasks, :published, :project_uid)
   end
 end
