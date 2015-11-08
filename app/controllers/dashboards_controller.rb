@@ -5,12 +5,12 @@ class DashboardsController < ApplicationController
     dashboard = Dashboard.find_by!(link_slug: params[:link_slug])
     if dashboard.published?
       pm = ProjectManager.new(dashboard.user)
-      render locals: {
+      render 'projects/show', layout: 'simple', locals: {
         project: pm.find_project(dashboard.project_uid),
         deadlines: pm.deadlines_for(dashboard.project_uid),
       }
     else
-      render status: 404
+      redirect_to root_url, notice: "Dashboard unavailable"
     end
   end
 

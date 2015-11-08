@@ -1,5 +1,6 @@
 module GithubResponses
   class << self
+    include WebMock::API
     def milestone
       MILESTONE
     end
@@ -30,6 +31,49 @@ module GithubResponses
 
     def user
       USER
+    end
+
+    def stub_all
+      # Projects (Github Repository)
+      stub_request(:get, %r|https://api.github.com/user/repos(\?.*)?|).to_return(
+        status: 200,
+        body: GithubResponses.repositories,
+        headers: { 'Content-Type'=>'application/json' }
+      )
+
+      # Project (Github Repository)
+      stub_request(:get, "https://api.github.com/repos/octocat/Hello-World").to_return(
+        status: 200,
+        body: GithubResponses.repository,
+        headers: { 'Content-Type'=>'application/json' }
+      )
+
+      # Open Deadlines (Github Milestone)
+      stub_request(:get, "https://api.github.com/repos/octocat/Hello-World/milestones?state=open").to_return(
+        status: 200,
+        body: GithubResponses.milestones,
+        headers: { 'Content-Type'=>'application/json' }
+      )
+
+      # Deadline (Github Milestone)
+      stub_request(:get, "https://api.github.com/repos/octocat/Hello-World/milestones/1").to_return(
+        status: 200,
+        body: GithubResponses.milestone,
+        headers: { 'Content-Type'=>'application/json' }
+      )
+
+      # Tasks (Github Issues)
+      stub_request(:get, "https://api.github.com/repos/octocat/Hello-World/issues?milestone=1&state=all").to_return(
+        status: 200,
+        body: GithubResponses.issues,
+        headers: { 'Content-Type'=>'application/json' }
+      )
+
+      stub_request(:get, "https://api.github.com/user").to_return(
+        status: 200,
+        body: GithubResponses.user,
+        headers: { 'Content-Type'=>'application/json' }
+      )
     end
   end
 
