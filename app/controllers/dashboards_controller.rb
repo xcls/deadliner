@@ -1,13 +1,17 @@
 class DashboardsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show]
 
   def show
-    dashboard = Dashboard.find_by_link_slug(params[:link_slug])
-    pm = ProjectManager.new(dashboard.user)
-    render locals: {
-      project: pm.find_project(dashboard.project_uid),
-      deadlines: pm.deadlines_for(dashboard.project_uid),
-    }
+    dashboard = Dashboard.find_by!(link_slug: params[:link_slug])
+    if dashboard.published?
+      pm = ProjectManager.new(dashboard.user)
+      render locals: {
+        project: pm.find_project(dashboard.project_uid),
+        deadlines: pm.deadlines_for(dashboard.project_uid),
+      }
+    else
+      render status: 404
+    end
   end
 
   def edit
@@ -34,6 +38,15 @@ class DashboardsController < ApplicationController
       deadline: pm.find_deadline(params[:project_id], params[:id]),
       tasks: pm.tasks_for(params[:project_id], params[:id])
     }
+  end
+
+  def destroy
+    @dashboard = Dashboard.find(params[:id])
+    if @dashboard.destroy
+      redirect_to projects_path
+    else
+      render :edit
+    end
   end
 
   private
