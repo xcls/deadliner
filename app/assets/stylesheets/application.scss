@@ -379,6 +379,7 @@ body {
     }
   }
 }
+
 .milestone-name {
   font-size: 20px;
   font-weight: bold;
@@ -844,4 +845,19 @@ body {
     background: #7379B7  image-url('preview-retina.png') no-repeat 50% 100%;
     background-size: 730px 360px;
   }
+}
+
+.demo-sign-in {
+  background: image-url('github-logo.svg') no-repeat 12px 50%;
+  background-size: 18px 18px;
+  display: block;
+  line-height: 32px;
+  font-size: 16px;
+  font-weight: bold;
+  border: 2px solid #FFEF8D ;
+  color: #fff;
+  text-decoration: none;
+  box-sizing: border-box;
+  padding-left: 38px;
+  padding-right: 12px;
 }
