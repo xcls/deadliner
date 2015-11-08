@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   resources :dashboards, only: [:new, :create, :update, :destroy]
 
   get '/dashboards/edit', to: 'dashboards#edit', as: :edit_dashboard
-  get '/x/:link_slug', to: 'dashboards#show', as: :show_dashboard
+  get '/x/:slug', to: 'dashboards#show', as: :show_dashboard
+  get '/dashboards/:slug/log_in', to: 'dashboards#login', as: :login_dashboard
+  post '/dashboards/:slug/authenticate', to: 'dashboards#authenticate', as: :authenticate_dashboard
 
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
   root 'home#index'

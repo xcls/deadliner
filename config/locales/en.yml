@@ -35,3 +35,4 @@ en:
         update: "Save"
   notice:
     saved: "Saved succesfully"
+    invalid_password: "Invalid password for this dashboard"

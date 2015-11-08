@@ -12,8 +12,8 @@
   <h3>Sharing link</h3>
   <% if dashboard.valid? %>
     <div class="copy-url">
-      <input type="text" value="<%= show_dashboard_url(dashboard.link_slug) %>" />
-      <a data-clipboard-text="<%= show_dashboard_url(dashboard.link_slug) %>"
+      <input type="text" value="<%= show_dashboard_url(dashboard.slug) %>" />
+      <a data-clipboard-text="<%= show_dashboard_url(dashboard.slug) %>"
          class="btn default js-copy-button">
         Copy
       </a>
@@ -22,4 +22,3 @@
     <p>Save the dashboard first.</p>
   <% end %>
 <div>
-

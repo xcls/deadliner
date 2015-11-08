@@ -1,0 +1,5 @@
+<%= form_for(:dashboard_login, url: authenticate_dashboard_path) do |f| %>
+  <%= f.password_field :password %>
+
+  <%= f.submit "Submit" %>
+<% end -%>

@@ -1,16 +1,21 @@
 class DashboardsController < ApplicationController
-  before_action :authenticate_user!, except: [:show]
+  before_action :authenticate_user!, except: [:show, :login, :authenticate]
 
   def show
-    dashboard = Dashboard.find_by!(link_slug: params[:link_slug])
-    if dashboard.published?
+    dashboard = Dashboard.find_by!(slug: params[:slug])
+
+    unless dashboard.published?
+      return redirect_to root_url, notice: "Dashboard unavailable"
+    end
+
+    if authenticated_for?(dashboard)
       pm = ProjectManager.new(dashboard.user)
       render 'projects/show', layout: 'simple', locals: {
         project: pm.find_project(dashboard.project_uid),
         deadlines: pm.deadlines_for(dashboard.project_uid),
       }
     else
-      redirect_to root_url, notice: "Dashboard unavailable"
+      redirect_to login_dashboard_path(dashboard.slug)
     end
   end
 
@@ -35,7 +40,7 @@ class DashboardsController < ApplicationController
   end
 
   def show_milestone
-    dashboard = Dashboard.find_by_link_slug(params[:link_slug])
+    dashboard = Dashboard.find_by!(slug: params[:slug])
     pm = ProjectManager.new(dashboard.user)
     render locals: {
       deadline: pm.find_deadline(params[:project_id], params[:id]),
@@ -43,12 +48,18 @@ class DashboardsController < ApplicationController
     }
   end
 
-  def destroy
-    @dashboard = Dashboard.find(params[:id])
-    if @dashboard.destroy
-      redirect_to projects_path
+  def login
+    render locals: { slug: params[:slug] }
+  end
+
+  def authenticate
+    dashboard = Dashboard.find_by!(slug: params[:slug])
+    if params[:dashboard_login][:password] == dashboard.password
+      session[:authenticated_for] ||= Set.new
+      session[:authenticated_for].add(dashboard.slug)
+      redirect_to show_dashboard_path(dashboard.slug)
     else
-      render :edit
+      redirect_to root_url, notice: t('notice.invalid_password')
     end
   end
 
@@ -56,6 +67,11 @@ class DashboardsController < ApplicationController
 
   def dashboard_params
     params.require(:dashboard)
-      .permit(:password, :show_tasks, :published, :project_uid, :link_slug)
+      .permit(:password, :show_tasks, :published, :project_uid, :slug)
+  end
+
+  def authenticated_for?(dashboard)
+    return true if dashboard.password.blank?
+    (session[:authenticated_for] || []).include?(dashboard.slug)
   end
 end
