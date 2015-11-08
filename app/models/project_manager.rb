@@ -88,6 +88,10 @@ class ProjectManager
     def completed?
       completion_percentage.ceil == 100
     end
+
+    def no_due_date?
+      due_on.blank?
+    end
   end
 
   class Task

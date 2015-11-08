@@ -23,6 +23,8 @@
           <h3 class="milestone-name"><%= deadline.name %></h3>
           <% if deadline.completed? %>
             <div class="milestone-message-completed">Completed</div>
+          <% elsif deadline.no_due_date? %>
+            <div class="milestone-message-no-date">No due date</div>
           <% else %>
             <ul class="milestone-countdown js-countdown-big" data-epoch-seconds="<%= deadline.due_on.to_i %>">
               <li class="milestone-interval">

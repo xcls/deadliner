@@ -15,6 +15,13 @@
       <div class="milestone-featured-action">
         <%= link_to "Close milestone", deadline.html_url, target: '_blank' %>
       </div>
+    <% elsif deadline.no_due_date? %>
+      <div class="milestone-featured-message-completed">
+        No due date
+      </div>
+      <div class="milestone-featured-action">
+        <%= link_to "Set a due date", deadline.html_url, target: '_blank' %>
+      </div>
     <% else %>
       <%= link_to path_for_deadline, class: 'countdown-link' do %>
       <ul class="milestone-featured-countdown js-countdown-big" data-epoch-seconds="<%= deadline.due_on.to_i %>">
