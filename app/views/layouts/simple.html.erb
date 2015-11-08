@@ -4,6 +4,17 @@
 <body>
   <%= render 'layouts/flashes' %>
   <%= yield %>
+
+<div class="footer">
+  <% credits = [
+    'Maarten Claes',
+    'Quinten Claes',
+    'Stelian Firez',
+    'Thomas Nys',
+  ].shuffle %>
+  <strong>Deadliner</strong> is a concept and realization by <%= credits.to_sentence %>.
+</div>
+
   <script type="text/javascript">
   var rumbleBannerBackgroundColor, rumbleBannerTextColor, rumbleBannerLinkColor, rumbleBannerPlacement;
       rumbleBannerBackgroundColor = "#161616";
