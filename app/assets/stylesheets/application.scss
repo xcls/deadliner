@@ -48,15 +48,30 @@ $fonts_url: 'fonts/';
   font-style: normal;
 }
 
+$input_mono_narrow_bold: "input_mono_narrow_bold", monospace;
 
-html, body, div, p, h1, h2, h3, h4, ul, li, img, input {
+$fonts_url_fallback: 'fonts/';
+
+// $fonts_url: 'http://d2zrsw3u8lkijg.cloudfront.net/fonts/';
+$fonts_url: 'fonts/';
+
+@font-face {
+  font-family: 'input_mono_narrow_bold';
+  src: url($fonts_url + 'InputMonoNarrow-Bold.woff2') format('woff2'),
+       url($fonts_url + 'InputMonoNarrow-Bold.woff') format('woff'),
+       url($fonts_url_fallback + 'InputMonoNarrow-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+html, body, div, p, h1, h2, h3, h4, ul, li, img, input, hr {
   margin: 0;
   padding: 0;
 }
 html {
   -webkit-text-size-adjust: none;
 }
-
 ul {
   list-style: none;
 }
@@ -76,13 +91,11 @@ body {
   width: 520px;
   margin: 0 auto;
 }
-
 .projects-avatar {
   border-radius: 50%;
   width: 96px;
   height: 96px;
 }
-
 .projects-instructions {
   font-size: 18px;
   font-weight: bold;
@@ -90,13 +103,11 @@ body {
   margin-top: 10px;
   margin-bottom: 40px;
 }
-
 .projects {
   width: 520px;
   margin: 0 auto;
   border-top: 1px solid #EDEDED;
 }
-
 .project {
   border-bottom: 1px solid #EDEDED;
   padding-top: 12px;
@@ -105,7 +116,6 @@ body {
   justify-content: space-between;
   align-items: center;
 }
-
 .project-name {
   font-size: 24px;
   font-weight: bold;
@@ -117,7 +127,6 @@ body {
     text-decoration: none;
   }
 }
-
 .project-description {
   font-size: 16px;
   line-height: 26px;
@@ -127,7 +136,6 @@ body {
   overflow: hidden;
   white-space: nowrap;
 }
-
 .project-share {
   width: 40px;
   height: 40px;
@@ -135,6 +143,77 @@ body {
   background: #F2F2F2 image-url('link.svg') no-repeat 50% 50%;
   border-radius: 50%;
 }
+
+.projects-pagination {
+  width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.pagination {
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+
+  .first,
+  .last,
+  .prev,
+  .next {
+
+    a {
+      display: block;
+      min-width: 48px;
+      padding: 0 8px;
+      box-sizing: border-box;
+      border: 2px solid #EDEDED;
+      text-decoration: none;
+      color: #737F98;
+      text-align: center;
+      line-height: 42px;
+      margin: 0 4px;
+
+      &:hover {
+        border: 2px solid #B5DEE1;
+      }
+    }
+  }
+  .page {
+
+    a {
+      display: block;
+      min-width: 48px;
+      padding: 0 8px;
+      box-sizing: border-box;
+      border: 2px solid #EDEDED;
+      text-decoration: none;
+      color: #737F98;
+      text-align: center;
+      line-height: 42px;
+      margin: 0 4px;
+
+      &:hover {
+        border: 2px solid #B5DEE1;
+      }
+    }
+  }
+  .current {
+    line-height: 42px;
+    display: block;
+    min-width: 35px;
+    padding: 0 8px;
+    background: #B5DEE1;
+    color: #fff;
+    text-align: center;
+    margin: 0 4px;
+  }
+  .first {
+    margin-left: -4px;
+  }
+}
+
+
 .milestones-header {
   display: flex;
   padding-top: 20px;
@@ -182,8 +261,11 @@ body {
   padding-top: 30px;
   margin-top: -68px;
 }
+.milestone-featured-completed-wrapper {
+  background-color: #88C29D;
+}
 .milestone-featured {
-
+  text-align: center;
 }
 .milestone-featured-name {
   font-size: 24px;
@@ -200,19 +282,19 @@ body {
   line-height: 48px;
   border-radius: 50%;
   background-color: rgba(0, 0, 0, 0.1);
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
 }
 .milestone-featured-countdown {
-  display: flex;
+  display: inline-flex;
+  flex-direction: row;
   justify-content: center;
   margin-top: 50px;
 }
 .milestone-featured-interval {
-  width: 180px;
   margin-right: 52px;
 
   &:first-child {
@@ -234,10 +316,29 @@ body {
   font-size: 24px;
   margin-top: -22px;
 }
+.milestone-featured-message-completed {
+  font-size: 64px;
+  font-weight: bold;
+  margin-top: 40px;
+
+  span {
+    background: image-url('check-yellow.svg') no-repeat 0 18px;
+    padding-left: 60px;
+  }
+}
+.milestone-featured-action {
+  font-size: 20px;
+  margin-top: 15px;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+  }
+}
 
 .milestones-wrapper {
   background-color: #F8F7F2;
-  padding-bottom: 100px; // for the railsrumble banner
 }
 .milestones {
   padding-top: 80px;
@@ -298,11 +399,33 @@ body {
   font-size: 36px;
   color: #5C7FC9;
 }
+.milestone-number-overdue {
+  color: #EB9489;
+}
 .milestone-label {
   font-size: 14px;
   margin-top: -6px;
   color: #939393;
   text-align: center;
+}
+.milestone-message-completed {
+  color: #88C29D;
+  font-size: 36px;
+  line-height: 42px;
+  font-weight: bold;
+  border-top: 1px solid #ECECEC;
+  border-bottom: 1px solid #ECECEC;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 16px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.milestone-message-no-date {
+  color: #B5DEE1;
+  font-size: 36px;
+  font-weight: bold;
 }
 .milestone-progress {
   width: 40px;
@@ -325,10 +448,6 @@ body {
   margin-top: 8px;
 }
 
-
-// ----------------------------------------------------------------------------
-// Issues
-// ----------------------------------------------------------------------------
 
 .issues-header {
   display: flex;
@@ -366,7 +485,7 @@ body {
   box-sizing: border-box;
 }
 
-.issues-milesone-wrapper {
+.issues-milestone-wrapper {
   background-color: #B5DEE1;
   height: 250px;
   text-align: center;
@@ -374,25 +493,28 @@ body {
   padding-top: 30px;
   margin-top: -68px;
 }
-.issues-milesone {
+.issues-milestone-completed-wrapper {
+  background-color: #88C29D;
+}
+.issues-milestone {
   text-align: center;
 }
-.issues-milesone-name {
+.issues-milestone-name {
   font-size: 24px;
   font-weight: bold;
 }
-.issues-milesone-countdown {
+.issues-milestone-countdown {
   display: inline-flex;
   flex-direction: row;
   justify-content: center;
   margin-top: 34px;
 }
-.issues-milesone-interval {
+.issues-milestone-interval {
   margin-right: 30px;
 
   &:first-child {
 
-    .issues-milesone-number {
+    .issues-milestone-number {
       color: #FFEF8D;
     }
   }
@@ -400,14 +522,25 @@ body {
     margin-right: 0;
   }
 }
-.issues-milesone-number {
+.issues-milestone-number {
   font-size: 82px;
   line-height: 84px;
   font-family: $input_mono_narrow_bold;
 }
-.issues-milesone-label {
+.issues-milestone-label {
   font-size: 14px;
   margin-top: -14px;
+}
+.issues-milestone-message-completed {
+  font-size: 48px;
+  font-weight: bold;
+  margin-top: 40px;
+
+  span {
+    background: image-url('check-yellow.svg') no-repeat 0 12px;
+    background-size: 36px 36px;
+    padding-left: 44px;
+  }
 }
 .milestones-overview {
   margin-top: 40px;
@@ -429,7 +562,6 @@ body {
   margin-left: auto;
   margin-right: auto;
   padding-top: 70px;
-  padding-bottom: 100px; // for the railsrumble banner
 }
 .issues-stats {
   display: flex;
@@ -512,7 +644,7 @@ body {
     display: block;
     width: 232px;
     height: 36px;
-    background: asset-url('deadliner-logo.svg') no-repeat 0 0;
+    background: image-url('deadliner-logo.svg') no-repeat 0 0;
     text-indent: 100%;
     overflow: hidden;
     white-space: nowrap;
@@ -531,7 +663,7 @@ body {
   justify-content: center;
 }
 .sign-in-github {
-  background: #C784A4 asset-url('github-logo.svg') no-repeat 18px 50%;
+  background: #C784A4 image-url('github-logo.svg') no-repeat 18px 50%;
   color: #fff;
   text-decoration: none;
   font-size: 20px;

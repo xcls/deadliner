@@ -1,4 +1,4 @@
-<div class="milestone-featured-wrapper">
+<div class="milestone-featured-wrapper <%= 'milestone-featured-completed-wrapper' if deadline.completed? %>">
   <div class="milestone-featured">
     <h2 class="milestone-featured-name"><%= deadline.name %></h2>
     <div class="milestone-featured-issues">
@@ -8,21 +8,30 @@
     <div class="milestone-featured-progress">
       <%= deadline.completion_percentage.round %>%
     </div>
-    <%= link_to path_for_deadline, class: 'countdown-link' do %>
-    <ul class="milestone-featured-countdown js-countdown-big" data-epoch-seconds="<%= deadline.due_on.to_i %>">
-      <li class="milestone-featured-interval">
-        <div class="milestone-featured-number js-countdown-days">00</div>
-        <div class="milestone-featured-label">days</div>
-      </li>
-      <li class="milestone-featured-interval">
-        <div class="milestone-featured-number js-countdown-hours">00</div>
-        <div class="milestone-featured-label">hours</div>
-      </li>
-      <li class="milestone-featured-interval">
-        <div class="milestone-featured-number js-countdown-minutes">00</div>
-        <div class="milestone-featured-label">minutes</div>
-      </li>
-    </ul>
+    <% if deadline.completed? %>
+      <div class="milestone-featured-message-completed">
+        <span>Completed</span>
+      </div>
+      <div class="milestone-featured-action">
+        <%= link_to "Close milestone", deadline.html_url, target: '_blank' %>
+      </div>
+    <% else %>
+      <%= link_to path_for_deadline, class: 'countdown-link' do %>
+      <ul class="milestone-featured-countdown js-countdown-big" data-epoch-seconds="<%= deadline.due_on.to_i %>">
+        <li class="milestone-featured-interval">
+          <div class="milestone-featured-number js-countdown-days">00</div>
+          <div class="milestone-featured-label">days</div>
+        </li>
+        <li class="milestone-featured-interval">
+          <div class="milestone-featured-number js-countdown-hours">00</div>
+          <div class="milestone-featured-label">hours</div>
+        </li>
+        <li class="milestone-featured-interval">
+          <div class="milestone-featured-number js-countdown-minutes">00</div>
+          <div class="milestone-featured-label">minutes</div>
+        </li>
+      </ul>
+      <% end %>
     <% end %>
   </div>
 </div>

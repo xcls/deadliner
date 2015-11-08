@@ -84,6 +84,10 @@ class ProjectManager
     def completion_percentage
       ((closed_issues / (open_issues + closed_issues).to_d) * 100.0).round(2)
     end
+
+    def completed?
+      completion_percentage.ceil == 100
+    end
   end
 
   class Task

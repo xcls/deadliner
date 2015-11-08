@@ -21,20 +21,24 @@
       <li class="milestone">
         <%= page.link_to_deadline(self, deadline) do %>
           <h3 class="milestone-name"><%= deadline.name %></h3>
-          <ul class="milestone-countdown js-countdown-big" data-epoch-seconds="<%= deadline.due_on.to_i %>">
-            <li class="milestone-interval">
-              <div class="milestone-number js-countdown-days">00</div>
-              <div class="milestone-label">days</div>
-            </li>
-            <li class="milestone-interval">
-              <div class="milestone-number js-countdown-hours">00</div>
-              <div class="milestone-label">hours</div>
-            </li>
-            <li class="milestone-interval">
-              <div class="milestone-number js-countdown-minutes">01</div>
-              <div class="milestone-label">mins</div>
-            </li>
-          </ul>
+          <% if deadline.completed? %>
+            <div class="milestone-message-completed">Completed</div>
+          <% else %>
+            <ul class="milestone-countdown js-countdown-big" data-epoch-seconds="<%= deadline.due_on.to_i %>">
+              <li class="milestone-interval">
+                <div class="milestone-number js-countdown-days">00</div>
+                <div class="milestone-label">days</div>
+              </li>
+              <li class="milestone-interval">
+                <div class="milestone-number js-countdown-hours">00</div>
+                <div class="milestone-label">hours</div>
+              </li>
+              <li class="milestone-interval">
+                <div class="milestone-number js-countdown-minutes">01</div>
+                <div class="milestone-label">mins</div>
+              </li>
+            </ul>
+          <% end %>
           <div class="milestone-progress"><%= deadline.completion_percentage.round %>%</div>
           <div class="milestone-issues">
             <strong><%= deadline.open_issues %></strong> open,
