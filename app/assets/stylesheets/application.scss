@@ -142,7 +142,6 @@ body {
   background: #F2F2F2 image-url('link.svg') no-repeat 50% 50%;
   border-radius: 50%;
 }
-
 .milestones-header {
   display: flex;
   padding-top: 20px;
@@ -156,20 +155,17 @@ body {
   display: flex;
   align-items: center;
 }
-
 .milestones-avatar {
   width: 48px;
   height: 48px;
   border-radius: 50%;
 }
-
 .milestones-project-name {
   font-size: 20px;
   color: #fff;
   font-weight: bold;
   margin-left: 8px;
 }
-
 .milestones-view-projects {
   display: block;
   line-height: 32px;
@@ -182,7 +178,6 @@ body {
   text-decoration: none;
   box-sizing: border-box;
 }
-
 .milestone-featured-wrapper {
   background-color: #B5DEE1;
   background-image: image-url('scene.svg'), image-url('birds.svg');
@@ -194,22 +189,18 @@ body {
   padding-top: 30px;
   margin-top: -68px;
 }
-
 .milestone-featured {
 
 }
-
 .milestone-featured-name {
   font-size: 24px;
   font-weight: bold;
 }
-
 .milestone-featured-issues {
   font-size: 16px;
   font-weight: bold;
   margin-top: 5px;
 }
-
 .milestone-featured-progress {
   width: 48px;
   height: 48px;
@@ -222,13 +213,11 @@ body {
   margin-right: auto;
   margin-top: 10px;
 }
-
 .milestone-featured-countdown {
   display: flex;
   justify-content: center;
   margin-top: 50px;
 }
-
 .milestone-featured-interval {
   width: 180px;
   margin-right: 52px;
@@ -239,16 +228,105 @@ body {
       color: #FFEF8D;
     }
   }
+  &:last-child {
+    margin-right: 0;
+  }
 }
-
 .milestone-featured-number {
   font-size: 144px;
   line-height: 148px;
   font-family: $input_mono_narrow_bold;
 }
-
 .milestone-featured-label {
   font-size: 24px;
   margin-top: -22px;
 }
 
+.milestones-wrapper {
+  background-color: #F8F7F2;
+}
+.milestones {
+  padding-top: 80px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.milestone {
+  background-color: #fff;
+  border: 4px solid #EDECE5;
+  width: 320px;
+  text-align: center;
+  box-sizing: border-box;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 40px;
+
+  a {
+    display: block;
+    text-decoration: none;
+    width: 312px;
+    padding-top: 18px;
+    padding-bottom: 22px;
+  }
+}
+.milestone-name {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 24px;
+  color: #939393;
+  width: 260px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.milestone-countdown {
+  border-top: 1px solid #ECECEC;
+  border-bottom: 1px solid #ECECEC;
+  margin-top: 16px;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 12px;
+  padding-bottom: 6px;
+}
+.milestone-interval {
+  margin-right: 24px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+.milestone-number {
+  font-family: $input_mono_narrow_bold;
+  font-size: 36px;
+  color: #5C7FC9;
+}
+.milestone-label {
+  font-size: 14px;
+  margin-top: -6px;
+  color: #939393;
+  text-align: center;
+}
+.milestone-progress {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  background-color: #F2F2F2;
+  color: #939393;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 14px;
+}
+.milestone-issues {
+  font-size: 16px;
+  color: #939393;
+  text-align: center;
+  margin-top: 8px;
+}
