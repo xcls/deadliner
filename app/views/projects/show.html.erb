@@ -1,8 +1,19 @@
-<%= render 'deadlines/header', {
-  show_projects: page.internal?,
-  project: page.project,
-  deadline: page.deadlines.first
-} %>
+<div class="milestones-header">
+  <div class="milestones-project">
+    <img class="milestones-avatar" src="<%= page.project.owner.avatar_url %>" alt="<%= page.project.owner.name %>">
+    <span class="milestones-project-name"><%= page.project.full_name %></span>
+  </div>
+
+  <% if page.internal? %>
+    <%= link_to "View projects", projects_path, class: "milestones-view-projects" %>
+  <% end %>
+</div>
+
+<% if page.featured_deadline %>
+  <%= render 'deadlines/featured',
+    path_for_deadline: page.path_for_deadline(self, page.featured_deadline),
+    deadline: page.featured_deadline %>
+<% end %>
 
 <div class="milestones-wrapper">
   <ul class="milestones">

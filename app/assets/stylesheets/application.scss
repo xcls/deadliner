@@ -33,18 +33,9 @@ $fonts_url: 'fonts/';
 @import "nprogress";
 @import "components/*";
 
-.container {
-  width: 800px;
-  margin: 0 auto;
-
-  a {
-    color: #08E;
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
+.countdown-link {
+  text-decoration: none;
+  color: inherit;
 }
 
 
