@@ -15,7 +15,16 @@
 
 class Dashboard < ActiveRecord::Base
   belongs_to :user
-  has_secure_token :link_slug
   validates_presence_of :user_id, :project_uid
   validates_uniqueness_of :project_uid, scope: :user_id
+  before_create :generate_link_slug
+
+  protected
+
+  def generate_token
+    self.token = loop do
+      link_slug = SecureRandom.urlsafe_base64(nil, false)
+      break link_slug unless Dashboard.exists?(link_slug: link_slug)
+    end
+  end
 end
