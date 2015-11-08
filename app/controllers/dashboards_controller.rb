@@ -33,7 +33,10 @@ class DashboardsController < ApplicationController
       redirect_to edit_dashboard_path(project_uid: dashboard.project_uid),
         notice: t('notice.saved')
     else
-      render :edit, locals: { dashboard: dashboard }
+      render :edit, layout: 'simple', locals: {
+        github_user: pm.github_user,
+        dashboard: dashboard
+      }
     end
   end
 
