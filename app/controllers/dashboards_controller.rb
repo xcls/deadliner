@@ -3,18 +3,19 @@ class DashboardsController < ApplicationController
 
   def show
     dashboard = Dashboard.find_by!(link_slug: params[:link_slug])
-    if dashboard.published?
-      if !dashboard.password.blank? && authenticated_for?(dashboard)
-        pm = ProjectManager.new(dashboard.user)
-        render 'projects/show', layout: 'simple', locals: {
-          project: pm.find_project(dashboard.project_uid),
-          deadlines: pm.deadlines_for(dashboard.project_uid),
-        }
-      else
-        redirect_to login_dashboard_path(dashboard.link_slug)
-      end
+
+    unless dashboard.published?
+      return redirect_to root_url, notice: "Dashboard unavailable"
+    end
+
+    if authenticated_for?(dashboard)
+      pm = ProjectManager.new(dashboard.user)
+      render 'projects/show', layout: 'simple', locals: {
+        project: pm.find_project(dashboard.project_uid),
+        deadlines: pm.deadlines_for(dashboard.project_uid),
+      }
     else
-      redirect_to root_url, notice: "Dashboard unavailable"
+      redirect_to login_dashboard_path(dashboard.slug)
     end
   end
 
@@ -39,7 +40,7 @@ class DashboardsController < ApplicationController
   end
 
   def show_milestone
-    dashboard = Dashboard.find_by_link_slug(params[:link_slug])
+    dashboard = Dashboard.find_by!(link_slug: params[:link_slug])
     pm = ProjectManager.new(dashboard.user)
     render locals: {
       deadline: pm.find_deadline(params[:project_id], params[:id]),
@@ -47,27 +48,16 @@ class DashboardsController < ApplicationController
     }
   end
 
-  def destroy
-    @dashboard = Dashboard.find(params[:id])
-    if @dashboard.destroy
-      redirect_to projects_path
-    else
-      render :edit
-    end
-  end
-
   def login
-    render locals: {
-      link_slug: params[:link_slug]
-    }
+    render locals: { link_slug: params[:link_slug] }
   end
 
   def authenticate
     dashboard = Dashboard.find_by!(link_slug: params[:link_slug])
     if params[:dashboard_login][:password] == dashboard.password
       session[:authenticated_for] ||= Set.new
-      session[:authenticated_for].add(dashboard.link_slug)
-      render :show
+      session[:authenticated_for].add(dashboard.slug)
+      redirect_to show_dashboard_path(dashboard.slug)
     else
       redirect_to root_url, notice: t('notice.invalid_password')
     end
@@ -80,7 +70,8 @@ class DashboardsController < ApplicationController
       .permit(:password, :show_tasks, :published, :project_uid, :link_slug)
   end
 
-  def authenticated_for? dashboard
-    session[:authenticated_for].include?(dashboard.link_slug)
+  def authenticated_for?(dashboard)
+    return true if dashboard.password.blank?
+    (session[:authenticated_for] || []).include?(dashboard.slug)
   end
 end

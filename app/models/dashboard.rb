@@ -21,6 +21,8 @@ class Dashboard < ActiveRecord::Base
   validates_format_of :link_slug, with: /\A[a-zA-Z0-9\-\_]+\z/, on: :update
   before_create :generate_link_slug
 
+  alias_attribute :slug, :link_slug
+
   protected
 
   def generate_link_slug

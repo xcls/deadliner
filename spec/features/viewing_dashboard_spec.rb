@@ -10,7 +10,7 @@ RSpec.feature "Viewing dashboards", type: :feature do
   end
 
   scenario "A dashboard is publicly visible when published" do
-    dashboard.update!(published: true)
+    dashboard.update!(password: nil, published: true)
     visit show_dashboard_path(dashboard.link_slug)
     expect(page).to have_content("octocat/Hello-World")
   end
