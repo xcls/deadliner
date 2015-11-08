@@ -2,6 +2,9 @@
 <html>
 <%= render 'layouts/head' %>
 <body>
+  <% if current_page?(root_path) %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <% end %>
   <%= render 'layouts/flashes' %>
   <%= yield %>
 
