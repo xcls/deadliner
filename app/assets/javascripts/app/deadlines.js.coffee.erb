@@ -25,7 +25,7 @@ $(document).on 'ready page:load', ->
       .on('update.countdown', updateCountdown)
 
 $(document).on 'ready page:load', ->
-  $wrapper = $('.js-dark-knight')
+  $wrapper = $('.js-dark-knight:not(.milestone-featured-completed-wrapper)')
   dueInSeconds = $wrapper.data('dueInSeconds')
   $night = $wrapper.find('.milestone-featured')
   secondsInDay = 24 * 3600
