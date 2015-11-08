@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   get '/dashboards/edit', to: 'dashboards#edit', as: :edit_dashboard
   get '/x/:link_slug', to: 'dashboards#show', as: :show_dashboard
+  get '/dashboards/:link_slug/log_in', to: 'dashboards#login', as: :login_dashboard
+  post '/dashboards/:link_slug/authenticate', to: 'dashboards#authenticate', as: :authenticate_dashboard
 
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
   root 'home#index'

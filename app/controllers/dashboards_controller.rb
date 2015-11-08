@@ -1,14 +1,18 @@
 class DashboardsController < ApplicationController
-  before_action :authenticate_user!, except: [:show]
+  before_action :authenticate_user!, except: [:show, :login, :authenticate]
 
   def show
     dashboard = Dashboard.find_by!(link_slug: params[:link_slug])
     if dashboard.published?
-      pm = ProjectManager.new(dashboard.user)
-      render 'projects/show', layout: 'simple', locals: {
-        project: pm.find_project(dashboard.project_uid),
-        deadlines: pm.deadlines_for(dashboard.project_uid),
-      }
+      if !dashboard.password.blank? && authenticated_for?(dashboard)
+        pm = ProjectManager.new(dashboard.user)
+        render 'projects/show', layout: 'simple', locals: {
+          project: pm.find_project(dashboard.project_uid),
+          deadlines: pm.deadlines_for(dashboard.project_uid),
+        }
+      else
+        redirect_to login_dashboard_path(dashboard.link_slug)
+      end
     else
       redirect_to root_url, notice: "Dashboard unavailable"
     end
@@ -52,10 +56,31 @@ class DashboardsController < ApplicationController
     end
   end
 
+  def login
+    render locals: {
+      link_slug: params[:link_slug]
+    }
+  end
+
+  def authenticate
+    dashboard = Dashboard.find_by!(link_slug: params[:link_slug])
+    if params[:dashboard_login][:password] == dashboard.password
+      session[:authenticated_for] ||= Set.new
+      session[:authenticated_for].add(dashboard.link_slug)
+      render :show
+    else
+      redirect_to root_url, notice: t('notice.invalid_password')
+    end
+  end
+
   private
 
   def dashboard_params
     params.require(:dashboard)
       .permit(:password, :show_tasks, :published, :project_uid, :link_slug)
+  end
+
+  def authenticated_for? dashboard
+    session[:authenticated_for].include?(dashboard.link_slug)
   end
 end
