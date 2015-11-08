@@ -2,21 +2,21 @@
 
 <% deadline = page.deadline %>
 
-<div class="issues-milesone-wrapper">
-  <div class="issues-milesone">
-    <h2 class="issues-milesone-name"><%= deadline.title %></h2>
-    <ul class="issues-milesone-countdown js-countdown-big" data-epoch-seconds="<%= page.deadline.due_on.to_i %>">
-      <li class="issues-milesone-interval">
-        <div class="issues-milesone-number js-countdown-days">00</div>
-        <div class="issues-milesone-label">days</div>
+<div class="issues-milestone-wrapper">
+  <div class="issues-milestone">
+    <h2 class="issues-milestone-name"><%= deadline.title %></h2>
+    <ul class="issues-milestone-countdown js-countdown-big" data-epoch-seconds="<%= page.deadline.due_on.to_i %>">
+      <li class="issues-milestone-interval">
+        <div class="issues-milestone-number js-countdown-days">00</div>
+        <div class="issues-milestone-label">days</div>
       </li>
-      <li class="issues-milesone-interval">
-        <div class="issues-milesone-number js-countdown-hours">00</div>
-        <div class="issues-milesone-label">hours</div>
+      <li class="issues-milestone-interval">
+        <div class="issues-milestone-number js-countdown-hours">00</div>
+        <div class="issues-milestone-label">hours</div>
       </li>
-      <li class="issues-milesone-interval">
-        <div class="issues-milesone-number js-countdown-minutes">00</div>
-        <div class="issues-milesone-label">minutes</div>
+      <li class="issues-milestone-interval">
+        <div class="issues-milestone-number js-countdown-minutes">00</div>
+        <div class="issues-milestone-label">minutes</div>
       </li>
     </ul>
     <div class="milestones-overview">
