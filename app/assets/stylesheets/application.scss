@@ -183,7 +183,7 @@ body {
   box-sizing: border-box;
 }
 
-.milesone-featured-wrapper {
+.milestone-featured-wrapper {
   background-color: #B5DEE1;
   background-image: image-url('scene.svg'), image-url('birds.svg');
   background-position: 50% 100%, 50% 270px;
@@ -195,22 +195,22 @@ body {
   margin-top: -68px;
 }
 
-.milesone-featured {
+.milestone-featured {
 
 }
 
-.milesone-featured-name {
+.milestone-featured-name {
   font-size: 24px;
   font-weight: bold;
 }
 
-.milesone-featured-issues {
+.milestone-featured-issues {
   font-size: 16px;
   font-weight: bold;
   margin-top: 5px;
 }
 
-.milesone-featured-progress {
+.milestone-featured-progress {
   width: 48px;
   height: 48px;
   line-height: 48px;
@@ -223,31 +223,31 @@ body {
   margin-top: 10px;
 }
 
-.milesone-featured-countdown {
+.milestone-featured-countdown {
   display: flex;
   justify-content: center;
   margin-top: 50px;
 }
 
-.milesone-featured-interval {
+.milestone-featured-interval {
   width: 180px;
   margin-right: 52px;
 
   &:first-child {
 
-    .milesone-featured-number {
+    .milestone-featured-number {
       color: #FFEF8D;
     }
   }
 }
 
-.milesone-featured-number {
+.milestone-featured-number {
   font-size: 144px;
   line-height: 148px;
   font-family: $input_mono_narrow_bold;
 }
 
-.milesone-featured-label {
+.milestone-featured-label {
   font-size: 24px;
   margin-top: -22px;
 }

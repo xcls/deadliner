@@ -8,23 +8,23 @@
 
 <% if deadlines && deadlines.first %>
   <% featured = deadlines.first %>
-  <div class="milesone-featured-wrapper">
-    <div class="milesone-featured">
-      <h2 class="milesone-featured-name"><%= featured.name %></h2>
-      <div class="milesone-featured-issues"><%= featured.open_issues %> open, <%= featured.closed_issues %> closed</div>
-      <div class="milesone-featured-progress"><%= featured.completion_percentage.round %>%</div>
-      <ul class="milesone-featured-countdown js-countdown-big" data-epoch-seconds="<%= featured.due_on.to_i %>">
-        <li class="milesone-featured-interval">
-          <div class="milesone-featured-number js-countdown-days">00</div>
-          <div class="milesone-featured-label">days</div>
+  <div class="milestone-featured-wrapper">
+    <div class="milestone-featured">
+      <h2 class="milestone-featured-name"><%= featured.name %></h2>
+      <div class="milestone-featured-issues"><%= featured.open_issues %> open, <%= featured.closed_issues %> closed</div>
+      <div class="milestone-featured-progress"><%= featured.completion_percentage.round %>%</div>
+      <ul class="milestone-featured-countdown js-countdown-big" data-epoch-seconds="<%= featured.due_on.to_i %>">
+        <li class="milestone-featured-interval">
+          <div class="milestone-featured-number js-countdown-days">00</div>
+          <div class="milestone-featured-label">days</div>
         </li>
-        <li class="milesone-featured-interval">
-          <div class="milesone-featured-number js-countdown-hours">00</div>
-          <div class="milesone-featured-label">hours</div>
+        <li class="milestone-featured-interval">
+          <div class="milestone-featured-number js-countdown-hours">00</div>
+          <div class="milestone-featured-label">hours</div>
         </li>
-        <li class="milesone-featured-interval">
-          <div class="milesone-featured-number js-countdown-minutes">00</div>
-          <div class="milesone-featured-label">minutes</div>
+        <li class="milestone-featured-interval">
+          <div class="milestone-featured-number js-countdown-minutes">00</div>
+          <div class="milestone-featured-label">minutes</div>
         </li>
       </ul>
     </div>
