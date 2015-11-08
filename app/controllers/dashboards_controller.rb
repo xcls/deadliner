@@ -11,9 +11,10 @@ class DashboardsController < ApplicationController
   end
 
   def edit
-    @dashboard = current_user.dashboards
-      .where(project_identifier: params[:project_identifier]).first_or_create!
-    @project_identifier = @dashboard.project_identifier
+    dashboard = current_user.dashboards
+      .where(project_identifier: params[:project_identifier])
+      .first_or_create!
+    render locals: { dashboard: dashboard }
   end
 
   def update
