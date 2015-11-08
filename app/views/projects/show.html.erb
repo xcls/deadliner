@@ -8,10 +8,7 @@
   <ul class="milestones">
     <% page.deadlines.each do |deadline| %>
       <li class="milestone">
-        <%= link_to deadline_path(
-          project_id: page.project.full_name,
-          id: deadline.number
-        ) do %>
+        <%= page.link_to_deadline(self, deadline) do %>
           <h3 class="milestone-name"><%= deadline.name %></h3>
           <ul class="milestone-countdown js-countdown-big" data-epoch-seconds="<%= deadline.due_on.to_i %>">
             <li class="milestone-interval">

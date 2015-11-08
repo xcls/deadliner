@@ -44,4 +44,14 @@ RSpec.feature "Public dashboards", type: :feature do
       fail "I don't know how to log in!"
     end
   end
+
+  scenario "I can edit the dashboard settings" do
+    user = create(:user)
+    login_as user, scope: :user
+
+    visit projects_path
+    find(".project .project-share").click
+
+    expect(page).to have_content("Configure a public dashboard")
+  end
 end
