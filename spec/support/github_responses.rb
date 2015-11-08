@@ -63,7 +63,7 @@ module GithubResponses
       )
 
       # Tasks (Github Issues)
-      stub_request(:get, "https://api.github.com/repos/octocat/Hello-World/issues?milestone=1&state=all").to_return(
+      stub_request(:get, "https://api.github.com/repos/octocat/Hello-World/issues?milestone=1&state=open").to_return(
         status: 200,
         body: GithubResponses.issues,
         headers: { 'Content-Type'=>'application/json' }
