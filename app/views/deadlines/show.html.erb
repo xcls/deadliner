@@ -48,7 +48,7 @@
       <a class="issue-name" href="<%= task.html_url %>" target="_blank">
         <%= task.name %>
         <% task.labels.each do |lbl| %>
-          <span class="issue-label"><%= lbl %></span>
+          <span class="issue-label"><%= lbl.name %></span>
         <% end %>
       </a>
       <p class="issue-details">#<%= task.number %> opened <%= ago_or_from_now(task.created_at) %> by <%= task.user.login %></p>
