@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151108073115) do
+ActiveRecord::Schema.define(version: 20151108125441) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20151108073115) do
   create_table "dashboards", force: :cascade do |t|
     t.string   "project_uid"
     t.integer  "user_id"
-    t.string   "link_slug"
+    t.string   "slug"
     t.string   "password"
     t.boolean  "show_tasks"
     t.boolean  "published"

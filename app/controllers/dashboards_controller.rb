@@ -2,7 +2,7 @@ class DashboardsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :login, :authenticate]
 
   def show
-    dashboard = Dashboard.find_by!(link_slug: params[:link_slug])
+    dashboard = Dashboard.find_by!(slug: params[:slug])
 
     unless dashboard.published?
       return redirect_to root_url, notice: "Dashboard unavailable"
@@ -40,7 +40,7 @@ class DashboardsController < ApplicationController
   end
 
   def show_milestone
-    dashboard = Dashboard.find_by!(link_slug: params[:link_slug])
+    dashboard = Dashboard.find_by!(slug: params[:slug])
     pm = ProjectManager.new(dashboard.user)
     render locals: {
       deadline: pm.find_deadline(params[:project_id], params[:id]),
@@ -49,11 +49,11 @@ class DashboardsController < ApplicationController
   end
 
   def login
-    render locals: { link_slug: params[:link_slug] }
+    render locals: { slug: params[:slug] }
   end
 
   def authenticate
-    dashboard = Dashboard.find_by!(link_slug: params[:link_slug])
+    dashboard = Dashboard.find_by!(slug: params[:slug])
     if params[:dashboard_login][:password] == dashboard.password
       session[:authenticated_for] ||= Set.new
       session[:authenticated_for].add(dashboard.slug)
@@ -67,7 +67,7 @@ class DashboardsController < ApplicationController
 
   def dashboard_params
     params.require(:dashboard)
-      .permit(:password, :show_tasks, :published, :project_uid, :link_slug)
+      .permit(:password, :show_tasks, :published, :project_uid, :slug)
   end
 
   def authenticated_for?(dashboard)

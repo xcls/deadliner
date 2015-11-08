@@ -23,3 +23,7 @@
   <% end %>
 <div>
 
+<% if dashboard.valid? %>
+  <div><%= show_dashboard_url(dashboard.slug) %></div>
+  <a id="copy_button" data-clipboard-text="<%= show_dashboard_url(dashboard.slug) %>">Copy</a>
+<% end %>
