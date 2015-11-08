@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                 :integer          not null, primary key
+#  email              :string           not null
+#  provider           :string
+#  uid                :string
+#  sign_in_count      :integer          default(0), not null
+#  current_sign_in_at :datetime
+#  last_sign_in_at    :datetime
+#  current_sign_in_ip :inet
+#  last_sign_in_ip    :inet
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  github_token       :string
+#
+
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
