@@ -27,7 +27,7 @@ en:
         password: 'Password'
     hints:
       dashboard:
-        published: "We won't show the dashboard until you mark it as public."
+        published: "We won't show the dashboard until you mark it as published."
   helpers:
     submit:
       dashboard:
