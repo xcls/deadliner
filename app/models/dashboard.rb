@@ -18,7 +18,7 @@ class Dashboard < ActiveRecord::Base
   validates_presence_of :user_id, :project_uid
   validates_uniqueness_of :project_uid, scope: :user_id
   validates_uniqueness_of :slug
-  validates_format_of :slug, with: /\A[a-zA-Z0-9\-\_]+\z/, on: :update
+  validates_format_of :slug, with: /\A[a-zA-Z0-9\-_]+\z/
   before_create :generate_slug
 
   protected
