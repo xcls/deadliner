@@ -4,7 +4,7 @@ class DashboardsController < ApplicationController
   def show
     dashboard = Dashboard.find_by!(slug: params[:slug])
     unless dashboard.published?
-      return redirect_to root_url, notice: "Dashboard unavailable"
+      return redirect_to root_url, alert: "Dashboard unavailable"
     end
     return unless basic_authenticate(dashboard)
 
