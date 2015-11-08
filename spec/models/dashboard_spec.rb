@@ -1,6 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe Dashboard, type: :model do
+  describe '#password_enabled?' do
+    it "is true when password isn't blank" do
+      [
+        ['lol', true],
+        ['', false],
+        [nil, false],
+      ].each do |(pass, enabled)|
+        dash = build(:dashboard, password: pass)
+        expect(dash.password_enabled?).to eq(enabled),
+          "#{pass.inspect} => #{enabled.inspect}"
+      end
+    end
+  end
+
   describe 'validations' do
 
     describe '#slug' do

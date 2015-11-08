@@ -27,12 +27,21 @@ class Dashboard < ActiveRecord::Base
   before_validation :generate_slug, on: :create
 
   def password
+    return nil unless password_enabled?
     @password ||= Password.new(encrypted_password)
   end
 
   def password=(new_password)
-    @password = Password.create(new_password)
-    self.encrypted_password = @password
+    if new_password.blank?
+      self.encrypted_password = nil
+    else
+      @password = Password.create(new_password || '')
+      self.encrypted_password = @password
+    end
+  end
+
+  def password_enabled?
+    !self.encrypted_password.blank?
   end
 
   protected
