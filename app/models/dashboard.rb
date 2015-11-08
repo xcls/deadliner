@@ -24,7 +24,7 @@ class Dashboard < ActiveRecord::Base
   protected
 
   def generate_slug
-    self.slug = loop do
+    self.slug ||= loop do
       val = SecureRandom.urlsafe_base64(nil, false)
       break val unless Dashboard.exists?(slug: val)
     end
