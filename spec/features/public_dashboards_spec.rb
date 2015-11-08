@@ -66,16 +66,23 @@ RSpec.feature "Public dashboards", type: :feature do
     user = create(:user)
     login_as user, scope: :user
 
-    dashboard = create(:dashboard)
+    visit edit_dashboard_path(project_uid: 'octocat/Hello-World')
 
-    visit edit_dashboard_path(project_uid: dashboard.project_uid)
+    within('#general-form') do
+      fill_in :dashboard_slug, with: "octo"
+      check :dashboard_published
+      click_on "Save"
+    end
 
-    expect(page).to have_content("Configure a public dashboard")
     fill_in :dashboard_password, with: "secretstuff"
-    first('#password-form').click_on "Save"
+    within('#password-form') do
+      click_on "Save"
+    end
+    expect(page).to have_content(I18n.t('notice.saved'))
 
-
-    dashboard.reload
-    expect(dashboard.password == "secretstuff").to eq(true)
+    basic_authorize('octo', 'secretstuff')
+    visit show_dashboard_path('octo')
+    expect(page).to have_content('octocat/Hello-World')
+    expect(page).to have_content('4 open, 8 closed')
   end
 end
