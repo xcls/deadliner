@@ -30,8 +30,8 @@ class ProjectManager
   end
 
   def tasks_for(project_id, deadline_id)
-    issues_list = client.list_issues(project_id, milestone: deadline_id, state: :open)
-    wrap_with Task, issues_list
+    issues_list = client.list_issues(project_id, milestone: deadline_id, state: :all)
+    wrap_with Task, issues_list.sort_by { |issue| issue[:state] }.reverse
   end
 
   private
@@ -91,7 +91,6 @@ class ProjectManager
 
     def completed?
       completion_percentage.ceil == 100
-      false
     end
 
     def no_due_date?
