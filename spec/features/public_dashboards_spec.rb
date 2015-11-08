@@ -53,5 +53,12 @@ RSpec.feature "Public dashboards", type: :feature do
     find(".project .project-share").click
 
     expect(page).to have_content("Configure a public dashboard")
+    fill_in :dashboard_slug, with: "the-project"
+    check :dashboard_show_tasks
+    check :dashboard_published
+    click_on "Save"
+
+    visit show_dashboard_path("the-project")
+    expect(page).to have_content("octocat/Hello-World")
   end
 end
