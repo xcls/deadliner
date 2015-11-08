@@ -5,7 +5,8 @@ class DashboardsController < ApplicationController
     dashboard = Dashboard.find_by!(link_slug: params[:link_slug])
     if dashboard.published?
       pm = ProjectManager.new(dashboard.user)
-      render 'projects/show', layout: 'simple', locals: {
+      render 'partials/_project_overview', layout: 'simple', locals: {
+        dashboard: dashboard,
         project: pm.find_project(dashboard.project_uid),
         deadlines: pm.deadlines_for(dashboard.project_uid),
       }
@@ -34,12 +35,14 @@ class DashboardsController < ApplicationController
     end
   end
 
-  def show_milestone
+  def show_deadline
     dashboard = Dashboard.find_by_link_slug(params[:link_slug])
     pm = ProjectManager.new(dashboard.user)
-    render locals: {
-      deadline: pm.find_deadline(params[:project_id], params[:id]),
-      tasks: pm.tasks_for(params[:project_id], params[:id])
+    render 'partials/_deadline', layout: 'simple', locals: {
+      dashboard: dashboard,
+      project: pm.find_project(dashboard.project_uid),
+      deadline: pm.find_deadline(dashboard.project_uid, params[:id]),
+      tasks: pm.tasks_for(dashboard.project_uid, params[:id])
     }
   end
 
