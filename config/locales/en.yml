@@ -20,4 +20,16 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  simple_form:
+    labels:
+      dashboard:
+        project_identifier: 'Project'
+        password: 'Password'
+    hints:
+      dashboard:
+        published: "We won't show the dashboard until you mark it as public."
+  helpers:
+    submit:
+      dashboard:
+        create: "Save"
+        update: "Save"
