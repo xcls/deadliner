@@ -1,10 +1,12 @@
 <div class="issues-header">
   <div class="issues-project">
-    <img class="issues-avatar" src="<%= project.owner.avatar_url %>" alt="<%= project.owner.name %>">
-    <span class="issues-project-name"><%= project.full_name %></span>
+    <img class="issues-avatar" src="<%= page.project.owner.avatar_url %>" alt="<%= page.project.owner.name %>">
+    <span class="issues-project-name"><%= page.project.full_name %></span>
   </div>
 
-  <% if show_projects %>
+  <% if page.internal?  %>
     <%= link_to "View projects", projects_path, class: "issues-view-projects" %>
+  <% else %>
+    <%= link_to "Sign in", user_omniauth_authorize_path(:github), class: 'sign-in-github' %>
   <% end %>
 </div>
