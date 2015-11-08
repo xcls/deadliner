@@ -32,6 +32,11 @@
       }
     }
 
+    #dashboard_project_uid {
+      min-width: 288px;
+      margin-left: 6px;
+    }
+
     label {
       /*width: $labelWidth;*/
       display: inline-block;
@@ -63,7 +68,7 @@
         margin-left: 18px;
       }
     }
-    .dashboard_slug {
+    .dashboard_slug, .dashboard_project_uid {
       label, input {
         font-size: 12px;
         font-family: $font_mono;
@@ -75,6 +80,17 @@
         text-align: right;
         padding-right: 1px;
       }
+    }
+
+    .dashboard_project_uid {
+      label {
+        font-family: 'Source Sans Pro', sans-serif;
+        font-size: 16px
+      }
+    }
+
+    .actions {
+      margin-top: 30px;
     }
   }
 
@@ -104,6 +120,7 @@
     padding-top: 10px;
     padding-bottom: 10px;
     margin-top: 10px;
+    margin-bottom: 30px;
     cursor: pointer;
   }
 
