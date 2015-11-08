@@ -28,6 +28,7 @@ en:
     hints:
       dashboard:
         published: "We won't show the dashboard until you mark it as published."
+        password: "Password protection will be removed when saved blank."
   helpers:
     submit:
       dashboard:

@@ -7,8 +7,13 @@
 
 
 <div class="dashboard-form">
-  <h3>Options</h3>
+  <ul>
+    <li id="general-form-tab" class="active">General</a>
+    <li id="password-form-tab">Password</a>
+  </ul>
   <%= render 'form', dashboard: dashboard %>
+  <%= render 'password_form', dashboard: dashboard %>
+
   <h3>Sharing link</h3>
   <% if dashboard.valid? %>
     <div class="copy-url">

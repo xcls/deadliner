@@ -45,7 +45,7 @@ RSpec.feature "Public dashboards", type: :feature do
     end
   end
 
-  scenario "I can edit the dashboard settings" do
+  scenario "I can edit the general dashboard settings" do
     user = create(:user)
     login_as user, scope: :user
 
@@ -56,9 +56,26 @@ RSpec.feature "Public dashboards", type: :feature do
     fill_in :dashboard_slug, with: "the-project"
     check :dashboard_show_tasks
     check :dashboard_published
-    click_on "Save"
+    first('#general-form').click_on "Save"
 
     visit show_dashboard_path("the-project")
     expect(page).to have_content("octocat/Hello-World")
+  end
+
+  scenario "I can edit the dashboard password" do
+    user = create(:user)
+    login_as user, scope: :user
+
+    dashboard = create(:dashboard)
+
+    visit edit_dashboard_path(project_uid: dashboard.project_uid)
+
+    expect(page).to have_content("Configure a public dashboard")
+    fill_in :dashboard_password, with: "secretstuff"
+    first('#password-form').click_on "Save"
+
+
+    dashboard.reload
+    expect(dashboard.password == "secretstuff").to eq(true)
   end
 end
