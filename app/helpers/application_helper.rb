@@ -18,4 +18,11 @@ module ApplicationHelper
     suffix = if Time.now <= time then "from now" else "ago" end
     "#{in_words} #{suffix}"
   end
+
+  def user_avatar(github_user)
+    link_to projects_path do
+      image_tag github_user.avatar_url,
+        alt: github_user.name, class: 'projects-avatar'
+    end
+  end
 end
