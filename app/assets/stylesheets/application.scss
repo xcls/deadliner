@@ -65,6 +65,7 @@ html, body, div, p, h1, h2, h3, h4, ul, li, img, input {
 html {
   -webkit-text-size-adjust: none;
 }
+
 ul {
   list-style: none;
 }
@@ -245,6 +246,7 @@ body {
 
 .milestones-wrapper {
   background-color: #F8F7F2;
+  padding-bottom: 100px; // for the railsrumble banner
 }
 .milestones {
   padding-top: 80px;
@@ -436,6 +438,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   padding-top: 70px;
+  padding-bottom: 100px; // for the railsrumble banner
 }
 .issues-stats {
   display: flex;
