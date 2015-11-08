@@ -77,6 +77,10 @@ class ProjectManager
   class Deadline
     include Charlatan.new(:original)
 
+    def initialize(*args)
+      super(*args)
+    end
+
     def name
       original.title
     end
@@ -87,14 +91,18 @@ class ProjectManager
 
     def completed?
       completion_percentage.ceil == 100
+      false
     end
 
     def no_due_date?
       due_on.blank?
     end
 
+
     def overdue?
-      !no_due_date? && (Time.now > due_on.to_time)
+      return false if no_due_date?
+      return false if completed?
+      Time.now > due_on.to_time
     end
 
     def due_in_seconds
