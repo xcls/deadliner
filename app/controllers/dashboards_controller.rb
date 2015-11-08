@@ -18,7 +18,7 @@ class DashboardsController < ApplicationController
   end
 
   def update
-    dashboard = Dashboard.find(params[:id])
+    dashboard = current_user.dashboards.find(params[:id])
     if dashboard.update_attributes(dashboard_params)
       redirect_to projects_path
     else
