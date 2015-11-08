@@ -15,13 +15,7 @@
           <%= project.description %>
         </div>
       </div>
-      <% if project.dashboard  %>
-        <a data-clipboard-text='<%= show_dashboard_url(link_slug: project.dashboard.link_slug)%>' id='d_clip_button' title='Click me to copy to clipboard.' class="project-share" />
-        <%= link_to "Edit", edit_dashboard_path(project_identifier: project.full_name), class: 'project-edit' %>
-        <%= link_to "Destroy", dashboard_path(project.dashboard), method: :delete, class: 'project-destroy' %>
-      <% else %>
-        <%= link_to "Start sharing", new_dashboard_path(project_identifier: project.full_name), class: 'project-new' %>
-      <% end %>
+      <%= link_to "", edit_dashboard_path(project_identifier: project.full_name), class: 'project-share' %>
     </li>
   <% end %>
 </ul>
