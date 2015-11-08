@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151108125441) do
+ActiveRecord::Schema.define(version: 20151108144328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,11 +21,11 @@ ActiveRecord::Schema.define(version: 20151108125441) do
     t.string   "project_uid"
     t.integer  "user_id"
     t.string   "slug"
-    t.string   "password"
+    t.string   "encrypted_password"
     t.boolean  "show_tasks"
     t.boolean  "published"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   add_index "dashboards", ["user_id"], name: "index_dashboards_on_user_id", using: :btree
