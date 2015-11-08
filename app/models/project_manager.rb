@@ -82,7 +82,11 @@ class ProjectManager
     end
 
     def completion_percentage
-      ((closed_issues / (open_issues + closed_issues).to_d) * 100.0).round(2)
+      if closed_issues == 0 && open_issues == 0
+        0
+      else
+        ((closed_issues / (open_issues + closed_issues).to_d) * 100.0).round(2)
+      end
     end
 
     def completed?
