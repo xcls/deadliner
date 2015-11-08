@@ -18,11 +18,11 @@ class DashboardsController < ApplicationController
   end
 
   def update
-    @dashboard = Dashboard.find(params[:id])
-    if @dashboard.update_attributes(dashboard_params)
+    dashboard = Dashboard.find(params[:id])
+    if dashboard.update_attributes(dashboard_params)
       redirect_to projects_path
     else
-      render :edit
+      render :edit, locals: { dashboard: dashboard }
     end
   end
 
