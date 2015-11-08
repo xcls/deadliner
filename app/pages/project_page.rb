@@ -27,7 +27,9 @@ class ProjectPage
 
   def featured_deadline
     return nil if deadlines.blank?
-    deadlines.find { |x| !x.completed? } || deadlines.first
+    deadlines.find { |x| x.overdue? } ||
+      deadlines.find { |x| !x.completed? } ||
+      deadlines.first
   end
 
   def path_for_deadline(view_context, deadline)
