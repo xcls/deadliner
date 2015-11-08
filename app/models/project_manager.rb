@@ -89,13 +89,6 @@ class ProjectManager
       completion_percentage.ceil == 100
     end
 
-    def _due_on
-      # Time.zone.local(2015, 11, 8, 23, 35)
-      # Time.zone.local(2015, 11, 9, 18, 35)
-      Time.zone.local(2015, 11, 8, 20, 35)
-      Time.zone.local(2015, 11, 8, 19, 35)
-    end
-
     def no_due_date?
       due_on.blank?
     end
