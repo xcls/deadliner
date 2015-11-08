@@ -18,7 +18,10 @@ class DashboardsController < ApplicationController
     dashboard = current_user.dashboards
       .where(project_uid: params[:project_uid])
       .first_or_create!
-    render locals: { dashboard: dashboard }
+    render layout: 'simple', locals: {
+      github_user: pm.github_user,
+      dashboard: dashboard,
+    }
   end
 
   def update

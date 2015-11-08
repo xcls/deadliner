@@ -1,6 +1,17 @@
-<%= render 'form', dashboard: dashboard %>
+<div class="projects-header">
+  <img class="projects-avatar" src="<%= github_user.avatar_url %>" alt="<%= github_user.name %>">
+  <p class="projects-instructions">
+  Configure a public dashboard
+  </p>
+</div>
 
-<% if dashboard.valid? %>
-  <div><%= show_dashboard_url(dashboard.link_slug) %></div>
-  <a id="copy_button" data-clipboard-text="<%= show_dashboard_url(dashboard.link_slug) %>">Copy</a>
-<% end %>
+<div class="dashboard-form">
+  <%= render 'form', dashboard: dashboard %>
+
+  <% if dashboard.valid? %>
+    <div><%= show_dashboard_url(dashboard.link_slug) %></div>
+    <a id="copy_button" data-clipboard-text="<%= show_dashboard_url(dashboard.link_slug) %>">
+      Copy
+    </a>
+  <% end %>
+<div>

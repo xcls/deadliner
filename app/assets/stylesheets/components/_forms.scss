@@ -1,0 +1,43 @@
+.dashboard-form {
+  $w: 520px;
+  $labelWidth: $w / 2;
+  width: $w;
+  margin: 0 auto;
+  border-top: 1px solid #EDEDED;
+
+  label {
+    width: $labelWidth;
+    display: inline-block;
+    line-height: 2;
+
+    abbr { display: none; }
+  }
+
+  input[type="text"],
+  input[type="password"]
+  {
+    padding: 3px;
+    width: $labelWidth - 10px;
+  }
+
+  .input {
+    .hint {
+      display: block;
+      color: #999;
+    }
+  }
+
+  .boolean {
+    label {
+      margin-left: $labelWidth;
+    }
+
+    input {
+      margin-right: 5px;
+    }
+
+    .hint {
+      margin-left: $labelWidth;
+    }
+  }
+}
