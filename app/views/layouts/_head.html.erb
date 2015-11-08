@@ -1,5 +1,7 @@
 <head>
+  <% if current_page?(root_path) %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <% end %>
   <title>Deadliner</title>
   <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
