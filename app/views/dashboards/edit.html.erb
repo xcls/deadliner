@@ -10,9 +10,8 @@
   <% if dashboard.valid? %>
     <div class="copy-url">
       <input type="text" value="<%= show_dashboard_url(dashboard.link_slug) %>" />
-      <a id="copy_button"
-         data-clipboard-text="<%= show_dashboard_url(dashboard.link_slug) %>"
-         class="btn default">
+      <a data-clipboard-text="<%= show_dashboard_url(dashboard.link_slug) %>"
+         class="btn default js-copy-button">
         Copy
       </a>
     </div>
