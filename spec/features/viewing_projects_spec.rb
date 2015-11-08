@@ -60,7 +60,9 @@ RSpec.feature "Viewing projects", type: :feature do
   scenario "I can see the details of a project" do
     visit projects_path
     click_on("Hello-World")
-    expect(page).to have_content("Project: octocat/Hello-World")
+    expect(page).to have_content("octocat/Hello-World")
+    expect(page).to have_content("v1.0") # name of the milestone
+    expect(page).to have_content("4 open, 8 closed")
   end
 
   scenario "I can see the deadlines on the project detail page" do
