@@ -1,5 +1,5 @@
 class DashboardsController < ApplicationController
-  before_action :authenticate_user!, except: [:show, :login, :authenticate]
+  before_action :authenticate_user!, except: [:show, :show_deadline, :login, :authenticate]
 
   def show
     dashboard = Dashboard.find_by!(slug: params[:slug])
@@ -12,7 +12,7 @@ class DashboardsController < ApplicationController
     page = ProjectPage.new(
       dashboard: dashboard,
       project: pm.find_project(dashboard.project_uid),
-      deadlines: pm.deadlines_for(dashboard.project_uid),
+      deadlines: pm.deadlines_for(dashboard.project_uid)
     )
     render 'projects/show', layout: 'simple', locals: { page: page }
   end
@@ -37,13 +37,20 @@ class DashboardsController < ApplicationController
     end
   end
 
-  def show_milestone
+  def show_deadline
     dashboard = Dashboard.find_by!(slug: params[:slug])
     pm = ProjectManager.new(dashboard.user)
-    render locals: {
-      deadline: pm.find_deadline(params[:project_id], params[:id]),
-      tasks: pm.tasks_for(params[:project_id], params[:id])
-    }
+    page = DeadlinePage.new(
+      dashboard: dashboard,
+      deadline: pm.find_deadline(dashboard.project_uid, params[:id]),
+      project: pm.find_project(dashboard.project_uid),
+      tasks: pm.tasks_for(dashboard.project_uid, params[:id])
+    )
+    if page.show_tasks?
+      render 'deadlines/show', layout: 'simple', locals: { page: page }
+    else
+      redirect_to show_dashboard_path(slug: dashboard.slug)
+    end
   end
 
   def login

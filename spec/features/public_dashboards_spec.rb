@@ -32,6 +32,33 @@ RSpec.feature "Public dashboards", type: :feature do
     expect(page).to have_content("HTTP Basic: Access denied.")
   end
 
+  scenario "I can't see the tasks of a deadline if show_tasks is false for the dashboard" do
+    dash = create(:dashboard, {
+      published: true,
+      show_tasks: false,
+      slug: 'my-dash',
+      password: ''
+    })
+
+    visit show_deadline_path(slug: dash.slug, id: 1)
+
+    expect(page).to have_content("octocat/Hello-World")
+  end
+
+  scenario "I can see the tasks of a deadline if show_tasks is true for the dashboard" do
+    dash = create(:dashboard, {
+      published: true,
+      show_tasks: true,
+      slug: 'my-dash',
+      password: ''
+    })
+
+    visit show_deadline_path(slug: dash.slug, id: 1)
+
+
+    expect(page).to have_content("This is milestone 1")
+  end
+
   def basic_authorize(name, password)
     driver = page.driver
     if driver.respond_to?(:basic_auth)

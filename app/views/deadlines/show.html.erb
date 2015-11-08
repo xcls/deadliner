@@ -1,16 +1,16 @@
-<div class="issues-header">
-  <div class="issues-project">
-    <img class="issues-avatar" src="<%= project.owner.avatar_url %>" alt="<%= project.owner.name %>">
-    <span class="issues-project-name"><%= project.full_name %></span>
-  </div>
+<%= render 'deadlines/header', {
+  show_projects: page.internal?,
+  project: page.project,
+  deadline: page.deadline,
+  page: page
+} %>
 
-  <%= link_to "View projects", projects_path, class: "issues-view-projects" %>
-</div>
+<% deadline = page.deadline %>
 
 <div class="issues-milesone-wrapper">
   <div class="issues-milesone">
-    <h2 class="issues-milesone-name"><%= deadline.name %></h2>
-    <ul class="issues-milesone-countdown js-countdown-big" data-epoch-seconds="<%= deadline.due_on.to_i %>">
+    <h2 class="issues-milesone-name"><%= deadline.title %></h2>
+    <ul class="issues-milesone-countdown js-countdown-big" data-epoch-seconds="<%= page.deadline.due_on.to_i %>">
       <li class="issues-milesone-interval">
         <div class="issues-milesone-number js-countdown-days">00</div>
         <div class="issues-milesone-label">days</div>
@@ -25,7 +25,7 @@
       </li>
     </ul>
     <div class="milestones-overview">
-      <%= link_to project.to_path do %>
+      <%= page.link_to_project(self, page.project) do %>
         <span>Milestones overview</span>
       <% end %>
     </div>
@@ -44,7 +44,7 @@
     <p class="issues-stats-progress"><%= deadline.completion_percentage.round %>%</p>
   </div>
   <ul class="issues">
-    <% tasks.each do |task| %>
+    <% page.tasks.each do |task| %>
     <li class="issue">
       <a class="issue-name" href="<%= task.html_url %>" target="_blank">
         <%= task.name %>
