@@ -1,10 +1,10 @@
 <%= simple_form_for dashboard, html: {id: 'general-form'} do |f| %>
   <%= f.input :project_uid, disabled: true %>
+  <%= f.input :slug, label: "URL: #{root_url}x/" %>
   <%= f.input :show_tasks %>
   <%= f.input :published %>
-  <%= f.input :slug, label: "#{root_url}x/" %>
 
-  <p class="text-right">
+  <p class="text-left">
     <%= link_to "Cancel", projects_path, class: "btn default" %>
     <%= f.submit class: 'btn primary' %>
   </p>

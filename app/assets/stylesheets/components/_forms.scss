@@ -15,17 +15,28 @@
     color: #81848A;
   }
 
+  .info {
+    margin: 10px auto ;
+  }
+
   form {
 
     div.input {
-      margin-bottom: 7px;
       margin-top: 7px;
+      margin-bottom: 15px;
+
+      .hint {
+        display: block;
+        color: #999;
+        /*margin-left: $labelWidth;*/
+      }
     }
 
     label {
-      width: $labelWidth;
+      /*width: $labelWidth;*/
       display: inline-block;
       line-height: 1.5;
+      padding-right: 5px;
 
       abbr { display: none; }
     }
@@ -34,39 +45,35 @@
     input[type="password"]
     {
       padding: 3px;
-      width: $labelWidth - 10px;
-    }
-
-    .input {
-      .hint {
-        display: block;
-        color: #999;
-      }
+      /*width: $labelWidth - 10px;*/
     }
 
     .boolean {
       label {
-        margin-left: $labelWidth;
+        /*margin-left: $labelWidth;*/
       }
 
       input {
         margin-right: 5px;
       }
-
-      .hint {
-        margin-left: $labelWidth;
-      }
     }
 
+    .dashboard_published {
+      .hint {
+        margin-left: 18px;
+      }
+    }
     .dashboard_slug {
       label, input {
         font-size: 12px;
         font-family: $font_mono;
       }
 
+
       label {
         /*width: auto;*/
         text-align: right;
+        padding-right: 1px;
       }
     }
   }
