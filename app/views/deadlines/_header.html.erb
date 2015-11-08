@@ -7,6 +7,6 @@
   <% if page.internal?  %>
     <%= link_to "View projects", projects_path, class: "issues-view-projects" %>
   <% else %>
-    <%= link_to "Sign in", user_omniauth_authorize_path(:github), class: 'sign-in-github' %>
+    <%= link_to "Sign in", user_omniauth_authorize_path(:github), class: 'demo-sign-in' %>
   <% end %>
 </div>
