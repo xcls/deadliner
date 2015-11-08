@@ -179,7 +179,7 @@ module GithubResponses
   "id": 1002604,
   "number": 1,
   "state": "open",
-  "title": "v1.0",
+  "title": "This is milestone 1",
   "description": "Tracking milestone for version 1.0",
   "creator": {
     "login": "octocat",
