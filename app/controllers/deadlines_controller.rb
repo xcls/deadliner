@@ -2,9 +2,12 @@ class DeadlinesController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    render locals: {
-      deadline: pm.find_deadline(params[:project_id], params[:id]),
-      tasks: pm.tasks_for(params[:project_id], params[:id])
+    project_uid = params[:project_id]
+    deadline_uid = params[:id]
+    render layout: 'simple', locals: {
+      project: pm.find_project(project_uid),
+      deadline: pm.find_deadline(project_uid, deadline_uid),
+      tasks: pm.tasks_for(project_uid, deadline_uid)
     }
   end
 end

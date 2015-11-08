@@ -1,35 +1,4 @@
-<div class="milestones-header">
-  <div class="milestones-project">
-    <img class="milestones-avatar" src="<%= github_user.avatar_url %>" alt="<%= github_user.name %>">
-    <span class="milestones-project-name"><%= project.full_name %></span>
-  </div>
-  <%= link_to "View projects", projects_path, class: "milestones-view-projects" %>
-</div>
-
-<% if deadlines && deadlines.first %>
-  <% featured = deadlines.first %>
-  <div class="milestone-featured-wrapper">
-    <div class="milestone-featured">
-      <h2 class="milestone-featured-name"><%= featured.name %></h2>
-      <div class="milestone-featured-issues"><%= featured.open_issues %> open, <%= featured.closed_issues %> closed</div>
-      <div class="milestone-featured-progress"><%= featured.completion_percentage.round %>%</div>
-      <ul class="milestone-featured-countdown js-countdown-big" data-epoch-seconds="<%= featured.due_on.to_i %>">
-        <li class="milestone-featured-interval">
-          <div class="milestone-featured-number js-countdown-days">00</div>
-          <div class="milestone-featured-label">days</div>
-        </li>
-        <li class="milestone-featured-interval">
-          <div class="milestone-featured-number js-countdown-hours">00</div>
-          <div class="milestone-featured-label">hours</div>
-        </li>
-        <li class="milestone-featured-interval">
-          <div class="milestone-featured-number js-countdown-minutes">00</div>
-          <div class="milestone-featured-label">minutes</div>
-        </li>
-      </ul>
-    </div>
-  </div>
-<% end %>
+<%= render 'deadlines/header', project: project, deadline: deadlines.try(:first) %>
 
 <div class="milestones-wrapper">
   <ul class="milestones">

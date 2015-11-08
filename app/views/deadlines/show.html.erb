@@ -1,5 +1,4 @@
-<h2>Deadline: <%= deadline.name %></h2>
-<%= countdown(deadline.due_on) %>
+<%= render 'deadlines/header', project: project, deadline: deadline %>
 
 <h4>Tasks</h4>
 <% tasks.each do |task| %>
