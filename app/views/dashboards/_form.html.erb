@@ -10,5 +10,8 @@
   <%= f.input :show_tasks %>
   <%= f.input :published %>
   <%= f.input :link_slug, label: "#{root_url}x/" %>
-  <%= f.submit %>
+  <p class="text-right">
+    <%= link_to "Cancel", projects_path, class: "btn default" %>
+    <%= f.submit %>
+  </p>
 <% end %>
