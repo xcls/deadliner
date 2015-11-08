@@ -15,5 +15,7 @@
   <%= render 'deadlines/featured',
     path_for_deadline: page.path_for_deadline(self, page.featured_deadline),
     deadline: page.featured_deadline %>
+<% else %>
+  <%= render 'deadlines/none', project: page.project %>
 <% end %>
 

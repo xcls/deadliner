@@ -1,0 +1,15 @@
+<div class="js-dark-knight milestone-featured-wrapper">
+  <div class="milestone-featured">
+    <h2 class="hidden milestone-featured-name">No milestones</h2>
+    <div class="milestone-featured-issues"></div>
+    <div class="hidden milestone-featured-progress"></div>
+    <div class="milestone-featured-message-completed">
+      No milestones :(
+    </div>
+    <div class="milestone-featured-action">
+      <%= link_to "Create milestones",
+        "#{project.html_url}/milestones",
+        target: '_blank' %>
+    </div>
+  </div>
+</div>

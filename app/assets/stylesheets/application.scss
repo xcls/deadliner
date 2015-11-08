@@ -38,6 +38,10 @@ $fonts_url: 'fonts/';
   color: inherit;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
 
 @font-face {
   font-family: 'input_mono_narrow_bold';
