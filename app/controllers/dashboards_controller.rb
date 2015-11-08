@@ -64,8 +64,4 @@ class DashboardsController < ApplicationController
     request_http_basic_authentication("The 'User Name' is #{dashboard.slug}")
     false
   end
-
-  def user_and_pass
-    ActionController::HttpAuthentication::Basic::user_name_and_password(request)
-  end
 end
