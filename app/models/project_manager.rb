@@ -18,7 +18,7 @@ class ProjectManager
   end
 
   def find_project(id)
-    client.repo(id)
+    Project.new client.repo(id)
   end
 
   def deadlines_for(id)
@@ -59,6 +59,18 @@ class ProjectManager
 
     def to_path
       "/projects/github/#{full_name}"
+    end
+
+    def owner
+      Login.new original.owner
+    end
+  end
+
+  class Login
+    include Charlatan.new(:original)
+
+    def name
+      original.login
     end
   end
 
