@@ -1,0 +1,22 @@
+.flash {
+  margin: 5px auto;
+  max-width: 1000px;
+  padding: 10px;
+}
+
+.flash-notice {
+  @extend .flash;
+  $color: #039;
+  color: $color;
+  border: 1px solid lighten($color, 30%);
+  background: lighten($color, 60%);
+}
+
+.flash-alert {
+  @extend .flash;
+  $color: #900;
+  color: $color;
+  border: 1px solid lighten($color, 20%);
+  background: lighten($color, 60%);
+}
+
