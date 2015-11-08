@@ -5,10 +5,15 @@
   margin: 0 auto;
   border-top: 1px solid #EDEDED;
 
+  div.input {
+    margin-bottom: 7px;
+    margin-top: 7px;
+  }
+
   label {
     width: $labelWidth;
     display: inline-block;
-    line-height: 2;
+    line-height: 1.5;
 
     abbr { display: none; }
   }
@@ -38,6 +43,17 @@
 
     .hint {
       margin-left: $labelWidth;
+    }
+  }
+
+  .dashboard_link_slug {
+    label, input {
+      font-family: monospace;
+    }
+
+    label {
+      /*width: auto;*/
+      text-align: right;
     }
   }
 }

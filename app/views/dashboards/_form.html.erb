@@ -1,11 +1,14 @@
 <%= simple_form_for dashboard do |f| %>
   <%= f.input :project_uid, disabled: true %>
 
+  <div class="input">
   <%= f.label "Password protect" %>
   <%= check_box_tag "Password protect" %>
+  </div>
+
   <%= f.input :password %>
   <%= f.input :show_tasks %>
   <%= f.input :published %>
-  <%= f.input :link_slug, label: 'x/' %>
+  <%= f.input :link_slug, label: "#{root_url}x/" %>
   <%= f.submit %>
 <% end %>
