@@ -330,3 +330,175 @@ body {
   text-align: center;
   margin-top: 8px;
 }
+
+
+// ----------------------------------------------------------------------------
+// Issues
+// ----------------------------------------------------------------------------
+
+.issues-header {
+  display: flex;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+.issues-project {
+  display: flex;
+  align-items: center;
+}
+.issues-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+.issues-project-name {
+  font-size: 20px;
+  color: #fff;
+  font-weight: bold;
+  margin-left: 8px;
+}
+.issues-view-projects {
+  display: block;
+  line-height: 32px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border: 2px solid #FFEF8D;
+  color: #fff;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.issues-milesone-wrapper {
+  background-color: #B5DEE1;
+  height: 250px;
+  text-align: center;
+  color: #fff;
+  padding-top: 30px;
+  margin-top: -68px;
+}
+.issues-milesone {
+  text-align: center;
+}
+.issues-milesone-name {
+  font-size: 24px;
+  font-weight: bold;
+}
+.issues-milesone-countdown {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 34px;
+}
+.issues-milesone-interval {
+  margin-right: 30px;
+
+  &:first-child {
+
+    .issues-milesone-number {
+      color: #FFEF8D;
+    }
+  }
+  &:last-child {
+    margin-right: 0;
+  }
+}
+.issues-milesone-number {
+  font-size: 82px;
+  line-height: 84px;
+  font-family: $input_mono_narrow_bold;
+}
+.issues-milesone-label {
+  font-size: 14px;
+  margin-top: -14px;
+}
+.milestones-overview {
+  margin-top: 40px;
+  font-size: 20px;
+
+  a {
+    color: #fff;
+    background: image-url('arrow.svg') no-repeat 0 50%;
+    padding-left: 28px;
+    text-decoration: none;
+  }
+  span {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+  }
+}
+
+.issues-wrapper {
+  width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 70px;
+}
+.issues-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.issues-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #81848A;
+}
+.issues-stats-summary {
+  font-size: 16px;
+  color: #939393;
+}
+.issues-stats-progress {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  background-color: #F2F2F2;
+  color: #939393;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+.issues {
+  border-top: 1px solid #EDEDED;
+  margin-top: 20px;
+}
+.issue {
+  border-bottom: 1px solid #EDEDED;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.issue-name {
+  font-size: 16px;
+  font-weight: bold;
+  color: #737F98;
+  line-height: 24px;
+  text-decoration: none;
+}
+.issue-details {
+  font-size: 16px;
+  line-height: 26px;
+  color: #758081;
+  width: 440px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.issue-label {
+  font-size: 13px;
+  font-weight: bold;
+  color: #939393;
+  line-height: 16px;
+  background-color: #F2F2F2;
+  border-radius: 2px;
+  padding-left: 3px;
+  padding-right: 3px;
+  margin-left: 3px;
+}
+.issues-pagination {
+  width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
