@@ -16,15 +16,15 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'charlatan'
 gem 'devise'
+gem 'has_secure_token'
 gem 'kaminari'
+gem 'nprogress-rails'
 gem 'octokit'
 gem 'omniauth-github'
 gem 'puma'
 gem 'rails_12factor', group: :production
 gem 'rdiscount'
-
 gem 'simple_form', '~> 3.2'
-gem 'has_secure_token'
 gem 'zeroclipboard-rails'
 
 group :test do

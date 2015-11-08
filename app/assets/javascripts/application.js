@@ -13,6 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//
 //= require jquery.countdown.min.js
-//= require_tree ./app
+//= require nprogress
+//= require nprogress-turbolinks
 //= require zeroclipboard
+//
+//= require_tree ./app
