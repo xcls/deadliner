@@ -7,11 +7,15 @@
 
 <div class="dashboard-form">
   <%= render 'form', dashboard: dashboard %>
-
   <% if dashboard.valid? %>
-    <div><%= show_dashboard_url(dashboard.link_slug) %></div>
-    <a id="copy_button" data-clipboard-text="<%= show_dashboard_url(dashboard.link_slug) %>">
-      Copy
-    </a>
+    <div class="copy-url">
+      <input type="text" value="<%= show_dashboard_url(dashboard.link_slug) %>" />
+      <a id="copy_button"
+         data-clipboard-text="<%= show_dashboard_url(dashboard.link_slug) %>"
+         class="btn default">
+        Copy
+      </a>
+    </div>
   <% end %>
 <div>
+
