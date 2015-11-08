@@ -31,10 +31,17 @@ class ProjectPage
 
   def path_for_deadline(view_context, deadline)
     return '' unless show_tasks?
-    view_context.deadline_path(
-      project_id: project.full_name,
-      id: deadline.number
-    )
+    if internal?
+      view_context.deadline_path(
+        project_id: project.full_name,
+        id: deadline.number
+      )
+    else
+      view_context.show_deadline_path(
+        slug: dashboard.slug,
+        id: deadline.number
+      )
+    end
   end
 
   class InternalDashboard

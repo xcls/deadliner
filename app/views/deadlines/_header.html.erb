@@ -1,0 +1,10 @@
+<div class="issues-header">
+  <div class="issues-project">
+    <img class="issues-avatar" src="<%= project.owner.avatar_url %>" alt="<%= project.owner.name %>">
+    <span class="issues-project-name"><%= project.full_name %></span>
+  </div>
+
+  <% if show_projects %>
+    <%= link_to "View projects", projects_path, class: "issues-view-projects" %>
+  <% end %>
+</div>
