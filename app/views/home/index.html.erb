@@ -1,13 +1,60 @@
-<h2>Current Status</h2>
-<% img_src = [
-  'https://media.giphy.com/media/toXKzaJP3WIgM/giphy.gif',
-  'http://i.imgur.com/rIPBmvV.gif',
-  'http://i.imgur.com/7YNrbUy.gif',
-  'http://i.imgur.com/DEMUyWC.gif', # hackerman
-  'http://i.imgur.com/vbRHD9E.gif', # house
-  'http://i.imgur.com/RvN7Xic.gif',
-  'https://media.giphy.com/media/eCqFYAVjjDksg/giphy.gif',
-  'https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif',
-  'https://media.giphy.com/media/XngVh5Xiaa4j6/giphy.gif'
-].sample %>
-<%= image_tag img_src %>
+<div class="site-header">
+  <h1 class="logo">
+    <a href="/">Deadliner</a>
+  </h1>
+  <h2 class="definition">Turn Github milestones into fun countdowns</h2>
+  <div class="call-to-action">
+    <%= link_to "Sign in", user_omniauth_authorize_path(:github), class: 'sign-in-github' %>
+    <%= link_to "See a demo", '#', class: 'see-a-demo' %>
+  </div>
+</div>
+
+<div class="main">
+  <ul class="features">
+    <li class="feature">
+      <%= image_tag "timer-icon.svg", alt: "See milestones as countdowns" %>
+      <h3 class="feature-title">
+        See milestones as countdowns
+      </h3>
+      <p class="feature-description">
+      Manage your projects better by setting due dates to your milestones.
+      </p>
+    </li>
+    <li class="feature">
+      <%= image_tag "share-icon.svg", alt: "Share a project dashboard" %>
+      <h3 class="feature-title">
+        Share a project dashboard
+      </h3>
+      <p class="feature-description">
+      Share project dashboards with clients or with your colleagues.
+      </p>
+    </li>
+  </ul>
+
+  <hr class="separator">
+
+  <div class="give-it-a-try">
+    <h2>Give it a try</h2>
+    <div class="call-to-action">
+      <%= link_to "Sign in", user_omniauth_authorize_path(:github), class: 'sign-in-github' %>
+      <%= link_to "See a demo", '#', class: 'see-a-demo-alt' %>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p class="quote-body">
+    &ldquo;Deadlines just aren't real to me until I'm staring one in the face.&rdquo;
+    </p>
+    <p class="quote-author">- Rick Riordan -</p>
+  </div>
+</div>
+
+<div class="footer">
+  <% credits = [
+    'Maarten Claes',
+    'Quinten Claes',
+    'Stelian Firez',
+    'Thomas Nys',
+  ].shuffle %>
+  <strong>Deadliner</strong> is a concept and realization by <%= credits.to_sentence %>.
+</div>
