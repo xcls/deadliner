@@ -33,3 +33,5 @@ en:
       dashboard:
         create: "Save"
         update: "Save"
+  notice:
+    saved: "Saved succesfully"

@@ -19,8 +19,9 @@ class DashboardsController < ApplicationController
 
   def update
     dashboard = current_user.dashboards.find(params[:id])
-    if dashboard.update_attributes(dashboard_params)
-      redirect_to projects_path
+    if dashboard.update(dashboard_params)
+      redirect_to edit_dashboard_path(project_identifier: dashboard.project_identifier),
+        notice: t('notice.saved')
     else
       render :edit, locals: { dashboard: dashboard }
     end
