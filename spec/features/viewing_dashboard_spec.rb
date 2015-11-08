@@ -16,7 +16,7 @@ RSpec.feature "Viewing dashboards", type: :feature do
   end
 
   scenario "A dashboard can't be reached if not published" do
-    dashboard.update!(published: false)
+    dashboard.update!(password: nil, published: false)
     visit show_dashboard_path(dashboard.slug)
     expect(page).to have_content("Dashboard unavailable")
   end
