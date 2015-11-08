@@ -59,6 +59,19 @@ RSpec.feature "Public dashboards", type: :feature do
     expect(page).to have_content("This is milestone 1")
   end
 
+  scenario "I can see the sign in button when on external dashboard" do
+    dash = create(:dashboard, {
+      published: true,
+      show_tasks: false,
+      slug: 'my-dash',
+      password: ''
+    })
+
+    visit show_deadline_path(slug: dash.slug, id: 1)
+
+    expect(page).to have_content("Sign in")
+  end
+
   def basic_authorize(name, password)
     driver = page.driver
     if driver.respond_to?(:basic_auth)
