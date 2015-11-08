@@ -30,8 +30,8 @@ class ProjectManager
   end
 
   def tasks_for(project_id, deadline_id)
-    issues_list = client.list_issues(project_id, milestone: deadline_id, state: :all)
-    wrap_with Task, issues_list.sort_by { |issue| issue[:state] }.reverse
+    issues_list = client.list_issues(project_id, milestone: deadline_id, state: :open)
+    wrap_with Task, issues_list
   end
 
   private
