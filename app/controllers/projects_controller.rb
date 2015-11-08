@@ -10,7 +10,7 @@ class ProjectsController < ApplicationController
 
   def show
     uid = params[:uid] || params[:id]
-    render layout: 'simple', locals: {
+    render 'partials/_project_overview', layout: 'simple', locals: {
       project: pm.find_project(uid),
       deadlines: pm.deadlines_for(uid),
     }

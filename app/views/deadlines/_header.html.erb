@@ -3,7 +3,9 @@
     <img class="milestones-avatar" src="<%= project.owner.avatar_url %>" alt="<%= project.owner.name %>">
     <span class="milestones-project-name"><%= project.full_name %></span>
   </div>
-  <%= link_to "View projects", projects_path, class: "milestones-view-projects" %>
+  <% unless defined?(dashboard) %>
+    <%= link_to "View projects", projects_path, class: "milestones-view-projects" %>
+  <% end %>
 </div>
 
 <% if deadline %>

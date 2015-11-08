@@ -1,10 +1,21 @@
-<%= render 'deadlines/header', project: project, deadline: deadlines.try(:first) %>
+<% if defined?(dashboard) %>
+  <%= render 'deadlines/header', project: project, deadline: deadlines.try(:first), dashboard: dashboard %>
+<% else %>
+  <%= render 'deadlines/header', project: project, deadline: deadlines.try(:first) %>
+<% end %>
 
 <div class="milestones-wrapper">
   <ul class="milestones">
     <% deadlines.each do |deadline| %>
       <li class="milestone">
-        <%= link_to deadline_path(project_id: project.full_name, id: deadline.number) do %>
+        <% if defined?(dashboard) && dashboard.show_tasks == false %>
+          <% deadline_path = "" %>
+        <% elsif defined?(dashboard) && dashboard.show_tasks == true %>
+          <% deadline_path = show_dashboard_deadline_path(link_slug: dashboard.link_slug, id: deadline.number) %>
+        <% else %>
+          <% deadline_path = deadline_path(project_id: project.full_name, id: deadline.number) %>
+        <% end %>
+        <%= link_to deadline_path do %>
           <h3 class="milestone-name"><%= deadline.name %></h3>
           <ul class="milestone-countdown js-countdown-big" data-epoch-seconds="<%= deadline.due_on.to_i %>">
             <li class="milestone-interval">
