@@ -16,7 +16,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'charlatan'
 gem 'devise'
-gem 'has_secure_token'
 gem 'kaminari'
 gem 'nprogress-rails'
 gem 'octokit'

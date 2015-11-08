@@ -1,1 +1,6 @@
 <%= render 'form', dashboard: dashboard %>
+
+<% if dashboard.valid? %>
+  <div><%= show_dashboard_url(dashboard.link_slug) %></div>
+  <a id="copy_button" data-clipboard-text="<%= show_dashboard_url(dashboard.link_slug) %>">Copy</a>
+<% end %>

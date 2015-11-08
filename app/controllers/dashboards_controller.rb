@@ -53,6 +53,6 @@ class DashboardsController < ApplicationController
 
   def dashboard_params
     params.require(:dashboard)
-      .permit(:password, :show_tasks, :published, :project_uid)
+      .permit(:password, :show_tasks, :published, :project_uid, :link_slug)
   end
 end
