@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  before_action :check_screenshot
   before_action :ensure_primary_host
 
   def new_session_path(scope)
@@ -32,5 +33,11 @@ class ApplicationController < ActionController::Base
 
   def pm
     @pm ||= ProjectManager.new(current_user)
+  end
+
+  def check_screenshot
+    unless params[:screenshot].blank?
+      redirect_to "/screenshot.html"
+    end
   end
 end
