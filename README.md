@@ -15,3 +15,6 @@ cp database.yml.example database.yml
 brake db:create db:migrate
 rails s
 ```
+## Screenshot
+
+![](/public/screenshot.png)
